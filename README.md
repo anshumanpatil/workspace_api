@@ -8,5 +8,7 @@ commands
 
 
 api
+
 POST http://localhost:3000/users/login parameters - { username, password }
+
 POST http://localhost:3000/users/register - { username, password }
