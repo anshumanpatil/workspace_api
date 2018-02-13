@@ -2,7 +2,9 @@
 
 commands
 
+- unzip api.zip
 - npm i --verbose
+- run sequelize migrate
 - npm start
 
 
