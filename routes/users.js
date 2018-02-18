@@ -13,8 +13,7 @@ router.get('/', function(req, res, next) {
 
 /* POST login users id and username. */
 /*
- * username
- * password
+ * username password
  * 
  */
 router.post('/login', function(req, res, next) {
@@ -39,16 +38,8 @@ router.post('/login', function(req, res, next) {
 
 /* POST register password and username. */
 /*
- * username
- * password
- * first_name
- * last_name
- * user_email
- * isActive {0/1}
- * role
- * createdBy {userId}
- * emailVerified {0/1}
- * profile_pic_url
+ * username password first_name last_name user_email isActive {0/1} role
+ * createdBy {userId} emailVerified {0/1} profile_pic_url
  * 
  */
 router.post('/register', function(req, res, next) {
@@ -72,5 +63,12 @@ router.post('/register', function(req, res, next) {
 	})
 });
 
-
+router.get('/:user_id', function(req, res, next) {
+		console.log('req ',req.params.user_id);
+		models.Boards.findAll({where: {
+			board_primaryowner:req.params.user_id
+			}}).then(tasks=>{
+				return res.status(200).json(tasks);
+		})
+});
 module.exports = router;

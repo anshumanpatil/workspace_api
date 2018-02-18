@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "otabxxcnajdyeb",
-    "password": "77ca55bdcf9befe8888a0bbeda7152d104ee8ba78ca90cd3a7f3744ee894c7bf",
-    "database": "d9d69dojseq30n",
-    "host": "ec2-54-163-234-99.compute-1.amazonaws.com",
+    "username": "apatil",
+    "password": "mvelopes",
+    "database": "rejoult",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "otabxxcnajdyeb",
-    "password": "77ca55bdcf9befe8888a0bbeda7152d104ee8ba78ca90cd3a7f3744ee894c7bf",
-    "database": "d9d69dojseq30n",
-    "host": "ec2-54-163-234-99.compute-1.amazonaws.com",
+    "username": "apatil",
+    "password": "mvelopes",
+    "database": "rejoult",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "otabxxcnajdyeb",
-    "password": "77ca55bdcf9befe8888a0bbeda7152d104ee8ba78ca90cd3a7f3744ee894c7bf",
-    "database": "d9d69dojseq30n",
-    "host": "ec2-54-163-234-99.compute-1.amazonaws.com",
+    "username": "apatil",
+    "password": "mvelopes",
+    "database": "rejoult",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   }
 }
