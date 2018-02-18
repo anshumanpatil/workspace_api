@@ -8,21 +8,25 @@ module.exports = function(sequelize, DataTypes) {
 			type : DataTypes.INTEGER
 		},
 		board_title : {
-			type : DataTypes.STRING
+			type : DataTypes.STRING,
+			allowNull: false
 		},
 		board_primaryowner: {
             type: DataTypes.INTEGER,
+            allowNull: false
 	    },
 	    isArchive: {
             type: DataTypes.INTEGER,
-            defaultValue: 1,
+            defaultValue: 0,
+            allowNull: false,
             validate: {
                 min: 0,
                 max: 1
             }
 	    },
 	    createdBy: {
-	        type: DataTypes.INTEGER
+	        type: DataTypes.INTEGER,
+	        allowNull: false
 	    },
 		createdAt : {
 			allowNull : false,
@@ -35,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods : {
 			associate : function(models) {
-				// associations can be defined here
+				
 			}
 		}
 	});

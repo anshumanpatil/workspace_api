@@ -4,9 +4,7 @@ var router = express.Router();
 
 /* GET all users listing. */
 router.get('/', function(req, res, next) {
-	models.User_Master.findAll({
-		attributes: ['username']
-	}).then(users=>{
+	models.User_Master.findAll().then(users=>{
 		return res.status(200).json(users);
 	})
 });
@@ -20,7 +18,7 @@ router.post('/login', function(req, res, next) {
 	models.User_Master.findAll({
 		where: req.body
 	}).then(users=>{
-		if(users){
+		if(users.length){
 			return res.status(200).json(users);
 		}else{
 			return res.status(400).json({
@@ -63,12 +61,18 @@ router.post('/register', function(req, res, next) {
 	})
 });
 
-router.get('/:user_id', function(req, res, next) {
-		console.log('req ',req.params.user_id);
-		models.Boards.findAll({where: {
-			board_primaryowner:req.params.user_id
-			}}).then(tasks=>{
-				return res.status(200).json(tasks);
+router.post('/userInfo', function(req, res, next) {
+	models.User_Master.findOne({where : {id : req.body.user_id}})
+	.then(user=>{
+		return user;
+	}).then(userInfo=>{
+		return models.Boards.findAll({where: {
+			board_primaryowner:userInfo.id
+		}}).then(boards=>{
+			return {user: userInfo, board : boards};
 		})
+	}).then(allInfo=>{
+		return res.status(200).json(allInfo);
+	})
 });
 module.exports = router;

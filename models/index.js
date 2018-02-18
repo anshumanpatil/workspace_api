@@ -1,12 +1,13 @@
 'use strict';
 
-var fs        = require('fs');
-var path      = require('path');
-var Sequelize = require('sequelize');
-var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || 'development';
-var config    = require('../config/config.json')[env];
-var db        = {};
+let fs        = require('fs');
+let path      = require('path');
+let Sequelize = require('sequelize');
+let basename  = path.basename(module.filename);
+let env       = process.env.NODE_ENV || 'development';
+let config    = require('../config/config.json')[env];
+let db        = {};
+let models = require('../models');
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -29,6 +30,8 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
+
+//models.Boards.belongsTo(models.User_Master);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

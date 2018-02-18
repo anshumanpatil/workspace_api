@@ -5,7 +5,15 @@ var router = express.Router();
 /* GET all boards listing. */
 router.get('/', function(req, res, next) {
 	models.Boards.findAll().then(boards=>{
-		return res.status(200).json(boards);
+		
+		if(boards.length){
+			return res.status(200).json(boards);
+		}else{
+			return res.status(400).json({
+				success: false,
+				error: 'Error No Board Found!'
+			});	
+		}
 	})
 });
 
@@ -15,7 +23,7 @@ parameter : {
 }
 */
 
-router.post('/', function(req, res, next) {
+router.post('/create', function(req, res, next) {
 	models.Boards.findOrCreate({
 		where: { 'board_title': req.body.board_title},
 		defaults: req.body
@@ -42,8 +50,6 @@ parameter : {
 }
 */
 router.patch('/', function(req, res, next) {
-	console.log("\n\n")
-	console.log("req.body",req.body)
   models.Boards.update(req.body
 	,{where: { 'id': req.body.boardId}}).then(board=>{
 		if(board){

@@ -8,28 +8,36 @@ module.exports = function(sequelize, DataTypes) {
 			type : DataTypes.INTEGER
 		},
 		board_id : {
-			type : DataTypes.INTEGER
+			type : DataTypes.INTEGER,
+            allowNull: false
 		},
 		task_title : {
-			type : DataTypes.STRING
+			type : DataTypes.STRING,
+            allowNull: false
 		},
 		task_description : {
-			type : DataTypes.STRING
+			type : DataTypes.STRING,
+            allowNull: false
 		},
 		task_owner : {
-			type : DataTypes.INTEGER
+			type : DataTypes.INTEGER,
+            allowNull: false
 		},
 		status : {
-			type : DataTypes.STRING
+			type : DataTypes.STRING,
+            allowNull: false
 		},
 		createdBy : {
-			type : DataTypes.INTEGER
+			type : DataTypes.INTEGER,
+            allowNull: false
 		},
 		severity : {
-			type : DataTypes.INTEGER
+			type : DataTypes.INTEGER,
+            allowNull: false
 		},
 		task_type : {
-			type : DataTypes.STRING
+			type : DataTypes.STRING,
+            allowNull: false
 		},
 		createdAt : {
 			allowNull : false,
