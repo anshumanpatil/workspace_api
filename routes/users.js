@@ -179,7 +179,13 @@ router.post('/userInfo', function(req, res, next) {
 });
 
 router.post('/getAllBoards', function(req, res, next) {
-	models.Board_Owners.findAll({where : {user_id : req.body.user_id}})
+	/*
+		SELECT brd.id, brd.board_title, brd.board_primaryowner, brdowner.user_id 
+		FROM public."Boards" AS brd 
+		INNER JOIN public."Board_Owners" AS brdowner 
+		ON brdowner.board_id = brd.id WHERE brdowner.user_id = 1
+	*/
+	models.Board_Owners.populateUsersById(1)
 	.then(boardOwners=>{
 		return res.status(200).json(boardOwners);
 	})

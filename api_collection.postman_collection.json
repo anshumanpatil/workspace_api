@@ -1,25 +1,97 @@
 {
-	"id": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
+	"id": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
 	"name": "api_collection",
 	"description": "",
 	"order": [
-		"1c007fac-4266-a28d-07c4-cae7afba7516",
-		"9e2e26e3-f6f4-e29a-abf1-2a6e5f013898",
-		"99b18044-82e2-e098-f7a3-67b29689ad90",
-		"4dab9517-3d88-c68a-ffa3-f401888c5efb",
-		"7f525f52-40da-db65-3e35-2bbf8341b478",
-		"fe53fb49-68d2-050d-ad9f-b6509f781413",
-		"84dedcaf-f881-349b-3527-5e411fc5d26e"
+		"9afa98d9-844e-b576-c19a-7750b919765c",
+		"1afb021c-16d8-41b8-1256-c2b2a2c2ec41",
+		"e977b813-0443-f295-0dde-731077c96fa5",
+		"a3817dcf-b785-6e06-fc9b-c1243c619a63",
+		"9f2633dd-c147-6169-e370-fb9da53ee021",
+		"8feb4848-06b9-977b-8d70-f2db88c72c46",
+		"fb85fe70-bd65-a89f-6cbb-2c589e32e2e9"
 	],
 	"folders": [],
 	"folders_order": [],
 	"timestamp": 0,
-	"owner": "2731950",
+	"owner": "662787",
 	"public": false,
 	"requests": [
 		{
 			"folder": null,
-			"id": "1c007fac-4266-a28d-07c4-cae7afba7516",
+			"id": "1afb021c-16d8-41b8-1256-c2b2a2c2ec41",
+			"name": "Login",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"key": "username",
+					"value": "demo",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "demo",
+					"type": "text"
+				}
+			],
+			"auth": null,
+			"events": null,
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "/*\r\n * username\r\n * password\r\n */\r\n",
+			"variables": null,
+			"headers": "Content-Type: application/x-www-form-urlencoded",
+			"method": "POST",
+			"pathVariables": null,
+			"url": "http://localhost:3000/users/login",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
+			"collection_id": "f015f240-41ff-eb88-cbdf-2903c17e69bf"
+		},
+		{
+			"id": "8feb4848-06b9-977b-8d70-f2db88c72c46",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/boards",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519030972484,
+			"name": "updateBoard",
+			"description": "",
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
+			"responses": [],
+			"rawModeData": "{ \"boardId\": 1,\r\n  \"board_title\": \"anshu\",\r\n  \"board_primaryowner\": 1,\r\n  \"isArchive\": 0,\r\n  \"createdBy\": 1,\r\n  \"owners\": [1,2,3] }"
+		},
+		{
+			"folder": null,
+			"id": "9afa98d9-844e-b576-c19a-7750b919765c",
 			"name": "Register",
 			"dataMode": "urlencoded",
 			"data": [
@@ -96,67 +168,11 @@
 				}
 			],
 			"pathVariableData": [],
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7"
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
+			"collection_id": "f015f240-41ff-eb88-cbdf-2903c17e69bf"
 		},
 		{
-			"id": "4dab9517-3d88-c68a-ffa3-f401888c5efb",
-			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:3000/boards/create",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "board_title",
-					"value": "anshu",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "board_primaryowner",
-					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "isArchive",
-					"value": "0",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "createdBy",
-					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1518983668493,
-			"name": "createBoard",
-			"description": "",
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
-			"responses": []
-		},
-		{
-			"id": "7f525f52-40da-db65-3e35-2bbf8341b478",
+			"id": "9f2633dd-c147-6169-e370-fb9da53ee021",
 			"headers": "",
 			"headerData": [],
 			"url": "http://localhost:3000/boards",
@@ -165,7 +181,7 @@
 			"pathVariableData": [],
 			"preRequestScript": null,
 			"method": "GET",
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
 			"data": null,
 			"dataMode": "params",
 			"name": "getAllBoards",
@@ -176,48 +192,40 @@
 			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {}
+			"helperAttributes": {},
+			"collection_id": "f015f240-41ff-eb88-cbdf-2903c17e69bf"
 		},
 		{
-			"id": "84dedcaf-f881-349b-3527-5e411fc5d26e",
-			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"id": "a3817dcf-b785-6e06-fc9b-c1243c619a63",
+			"headers": "Content-Type: application/json\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
+					"value": "application/json",
 					"description": "",
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/users/userInfo",
+			"url": "http://localhost:3000/boards/create",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "POST",
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
-			"data": [
-				{
-					"key": "user_id",
-					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"name": "userInfo",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1518984949160,
-			"version": 2,
-			"responses": [],
+			"data": [],
+			"dataMode": "raw",
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {}
+			"helperAttributes": {},
+			"time": 1519030460106,
+			"name": "createBoard",
+			"description": "",
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
+			"responses": [],
+			"rawModeData": "{ \"board_title\": \"anshu\",\r\n  \"board_primaryowner\": 1,\r\n  \"isArchive\": 0,\r\n  \"createdBy\": 1,\r\n  \"owners\": [1,2,3] }"
 		},
 		{
-			"id": "99b18044-82e2-e098-f7a3-67b29689ad90",
+			"id": "e977b813-0443-f295-0dde-731077c96fa5",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
@@ -249,52 +257,12 @@
 			"time": 1518983958862,
 			"name": "getAllUsers",
 			"description": "",
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
-			"responses": []
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
+			"responses": [],
+			"collection_id": "f015f240-41ff-eb88-cbdf-2903c17e69bf"
 		},
 		{
-			"folder": null,
-			"id": "9e2e26e3-f6f4-e29a-abf1-2a6e5f013898",
-			"name": "Login",
-			"dataMode": "urlencoded",
-			"data": [
-				{
-					"key": "username",
-					"value": "demo",
-					"type": "text"
-				},
-				{
-					"key": "password",
-					"value": "demo",
-					"type": "text"
-				}
-			],
-			"auth": null,
-			"events": null,
-			"rawModeData": "",
-			"descriptionFormat": null,
-			"description": "/*\r\n * username\r\n * password\r\n */\r\n",
-			"variables": null,
-			"headers": "Content-Type: application/x-www-form-urlencoded",
-			"method": "POST",
-			"pathVariables": null,
-			"url": "http://localhost:3000/users/login",
-			"preRequestScript": null,
-			"tests": null,
-			"currentHelper": null,
-			"helperAttributes": null,
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded"
-				}
-			],
-			"pathVariableData": [],
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7"
-		},
-		{
-			"id": "fe53fb49-68d2-050d-ad9f-b6509f781413",
+			"id": "fb85fe70-bd65-a89f-6cbb-2c589e32e2e9",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
@@ -304,39 +272,33 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:3000/boards",
+			"url": "http://localhost:3000/users/userInfo",
 			"queryParams": [],
 			"pathVariables": {},
 			"pathVariableData": [],
 			"preRequestScript": null,
-			"method": "PATCH",
-			"collectionId": "39307d4a-d892-e55a-3dd1-a641ea1ff9f7",
+			"method": "POST",
+			"collectionId": "f015f240-41ff-eb88-cbdf-2903c17e69bf",
 			"data": [
 				{
-					"key": "boardId",
+					"key": "user_id",
 					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "board_title",
-					"value": "foo",
 					"description": "",
 					"type": "text",
 					"enabled": true
 				}
 			],
 			"dataMode": "urlencoded",
-			"name": "updateBoard",
+			"name": "userInfo",
 			"description": "",
 			"descriptionFormat": "html",
-			"time": 1518983878467,
+			"time": 1518984949160,
 			"version": 2,
 			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {}
+			"helperAttributes": {},
+			"collection_id": "f015f240-41ff-eb88-cbdf-2903c17e69bf"
 		}
 	]
 }

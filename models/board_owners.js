@@ -8,10 +8,12 @@ module.exports = function(sequelize, DataTypes) {
 			type : DataTypes.INTEGER
 		},
 		board_id : {
-			type : DataTypes.STRING
+			type : DataTypes.INTEGER,
+			allowNull: false
 		},
 		user_id : {
-			type : DataTypes.STRING
+			type : DataTypes.INTEGER,
+			allowNull: false
 		},
 		isActive : {
 			allowNull : false,
@@ -40,5 +42,16 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		}
 	});
+	
+	Board_Owners.populateUsersById = uid =>{
+		let qry = `
+		SELECT brd.id, brd.board_title, brd.board_primaryowner, brdowner.user_id 
+		FROM public."Boards" AS brd 
+		INNER JOIN public."Board_Owners" AS brdowner 
+		ON brdowner.board_id = brd.id WHERE brdowner.user_id = 1
+		`;
+		return sequelize.query(qry)
+	}
+	
 	return Board_Owners;
 };
