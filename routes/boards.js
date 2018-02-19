@@ -29,7 +29,22 @@ router.post('/create', function(req, res, next) {
 		defaults: req.body
 	}).then(board=>{
 		if(board){
-			return res.status(200).json({success: true, board: board});
+			let boardSole = board[0];
+			let promises = [];
+			let owners = req.body.owners;
+			owners.forEach(owner=>{
+				promises.push(models.Board_Owners.create({board_id: boardSole.id, user_id: owner}))
+			})
+			
+			Promise.all(promises).then(all=>{
+				return res.status(200).json({
+					success: true,
+					board: board,
+					owners: all
+				});
+			})
+			
+			
 		}else{
 			return res.status(400).json({
 				success: false,
@@ -53,7 +68,19 @@ router.patch('/', function(req, res, next) {
   models.Boards.update(req.body
 	,{where: { 'id': req.body.boardId}}).then(board=>{
 		if(board){
-			return res.status(200).json({success: true, board: board});
+			let promises = [];
+			let owners = req.body.owners;
+			owners.forEach(owner=>{
+				promises.push(models.Board_Owners.create({board_id: board[0], user_id: owner}))
+			})
+			
+			Promise.all(promises).then(all=>{
+				return res.status(200).json({
+					success: true,
+					board: board,
+					owners: all
+				});
+			})
 		}else{
 			return res.status(400).json({
 				success: false,
