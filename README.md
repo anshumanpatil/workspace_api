@@ -1,12 +1,18 @@
--------------------------------------------------------------------------------------------
-Run - Following commands to run project..
--------------------------------------------------------------------------------------------
-Create database in mysql named `pharma_development`
+
+Run Following commands to run project
+
+Create database in mysql named "pharma_development"
+
 npm i --verbose
+
 sequelize:db:migrate:undo:all
+
 sequelize:db:migrate
+
 sequelize:db:seed:all
+
 npm start
+
 -------------------------------------------------------------------------------------------
 api - port 5000
 application - port 4200
