@@ -1,0 +1,57 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			 
+			<button type="button" class="btn btn-success" (click)="backToGrid()">
+				Back To Products
+			</button>
+		</div>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" #addProductForm = "ngForm" (ngSubmit)="onAddProductSubmit(addProductForm)">
+				<div class="form-group">
+					 
+					<label for="genName">
+						Generic Name
+					</label>
+					<input class="form-control" id="genName" type="text" [(ngModel)]="product.genName" name="genName"/>
+				</div>
+				<div class="form-group">
+					 
+					<label for="brand">
+						Brand
+					</label>
+					<input class="form-control" id="brand" type="text" [(ngModel)]="product.brand" name="brand"/>
+				</div>
+				<div class="form-group">
+					 
+					<label for="price">
+						Price
+					</label>
+					<input class="form-control" id="price" type="text" [(ngModel)]="product.price" name="price"/>
+				</div>
+				<div class="form-group">
+					 
+					<label for="catagory">
+						Catagory
+					</label>
+					<select class="form-control" [(ngModel)]="product.catagory_id" name="catagory_id" placeholder="Select Catagory">
+						<option *ngFor="let catagory of catagories" value="{{catagory.id}}">{{catagory.catagory_name}}</option>
+					</select>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">
+					Submit
+				</button>
+				<button type="button" class="btn btn-primary" (click)="deleteProduct()">
+						Delete Product
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<button (click)="addProduct()">Add Product</button>
+<button (click)="getSelectedRows()">Modify Product</button>
+
+<ag-grid-angular 
+	#agGrid
+    style="width: 810px; height: 500px;" 
+    class="ag-theme-balham"
+    rowSelection="single"
+    [enableSorting]="true"
+    [enableFilter]="true"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+    >
+</ag-grid-angular>

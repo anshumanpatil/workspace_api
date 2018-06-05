@@ -1,0 +1,42 @@
+{
+    "development": {
+        "username": "root",
+        "password": "",
+        "database": "pharma_development",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "pool": {
+            "min": 5,
+            "max": 10,
+            "acquire": 30000,
+            "idle": 60000
+        }
+    },
+    "test": {
+        "username": "mvelopes",
+        "password": "mvelopes",
+        "database": "pharma_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "pool": {
+            "min": 5,
+            "max": 10,
+            "acquire": 30000,
+            "idle": 60000
+        }
+    },
+    "production": {
+        "dialect": "mysql",
+        "pool": {
+            "min": 5,
+            "max": 10
+        },
+        "ssl": true,
+        "dialectOptions": {
+            "ssl": {
+                "require": true
+            }
+        },
+        "use_env_variable": "DATABASE_URL"
+    }
+}
