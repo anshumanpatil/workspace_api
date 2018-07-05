@@ -32,7 +32,7 @@ _.each(require("./config"), function (controller) {
 					res.render(def.file);
 				});
 			}else{
-				console.log(colors.bg.Blue, colors.fg.White, 'route ' + url + ' - method - ' ,colors.bg.Red, colors.fg.White, verb.toUpperCase(), colors.Reset);
+				console.log(colors.bg.Blue, colors.fg.White, 'route ' + url + ' - method - ' ,colors.bg.Red, colors.fg.White, verb.toUpperCase(), colors.Reset, colors.bg.Blue, colors.fg.White,"From - ./controllers/" + controller + ".js", colors.Reset);
 				var method = require("./controllers")[controller][def.method];
 				app[verb](url, method);
 			}
