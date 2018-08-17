@@ -18,7 +18,9 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
+models.sequelize.sync()
+.then(result =>console.log(result))
+.catch(error =>console.log(error))
 var server = http.createServer(app);
 
 /**
