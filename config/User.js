@@ -9,7 +9,12 @@ module.exports = {
     '/user/login': {
         post: {
             method: 'login',
-            public: true
+            public: true,
+            schema : {
+                body: {
+                    user_name: Joi.string().required()
+                }
+            }
         }
     },
     '/user/forget': { 

@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var _ = require('lodash');
-var app = express();
-var cors = require('cors');
-let colors = require('./lib/colors');
+global.Joi = require('joi');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const _ = require('lodash');
+const app = express();
+const cors = require('cors');
+const Validatior = require('./lib/validatorMiddleware');
+const colors = require('./lib/colors');
 // view engine setup
 
 app.use(cors());
@@ -34,7 +35,12 @@ _.each(require("./config"), function (controller) {
 			}else{
 				console.log(colors.bg.Blue, colors.fg.White, 'route ' + url + ' - method - ' ,colors.bg.Red, colors.fg.White, verb.toUpperCase(), colors.Reset, colors.bg.Blue, colors.fg.White,"From - ./controllers/" + controller + ".js", colors.Reset);
 				var method = require("./controllers")[controller][def.method];
-				app[verb](url, method);
+				if(def.schema) {
+					app[verb](url, Validatior.validate(def.schema), method);
+				}else{
+					app[verb](url, method);
+				}
+				
 			}
 		})
 	})
@@ -51,15 +57,21 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  console.log(err)
+  if(err.isValidationError){
+	  console.log( err.output);
+	  return res.status(err.output.statusCode).json(err.output)
+	  
+  }
+  
   
   // render the error page
   res.status(err.status || 500);
   res.render('error', { errorString : err.message });
-  console.log(err)
+  
 });
 
 module.exports = app;
