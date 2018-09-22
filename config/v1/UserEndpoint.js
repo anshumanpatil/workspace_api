@@ -15,7 +15,24 @@ module.exports = {
     '/user/register': {
         post: {
             method: 'register',
-            public: true
+            public: true,
+            schema : {
+                body: {
+                    user_email: Joi.string().required(),
+                    user_password: Joi.string().required()
+                }
+            }
+        }
+    },
+    '/user/profile': {
+        post: {
+            method: 'getProfile',
+            public: false,
+            schema : {
+                body: {
+                    user_email: Joi.string().required()
+                }
+            }
         }
     }
 };

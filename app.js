@@ -17,6 +17,7 @@ moduleAlias.addAliases({
 	'@lib'  : __dirname + '/lib'
 })
 /* ------------------------- */ 
+
 app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
+
 
 const api_version = [
 	'v1'
@@ -43,11 +45,7 @@ _.each(require(`./config/${api_version[0]}`), function (controller) {
 			}else{
 				console.log(colors.bg.Blue, colors.fg.White, 'route ' + url + ' - method - ' ,colors.bg.Red, colors.fg.White, verb.toUpperCase(), colors.Reset, colors.bg.Blue, colors.fg.White,"From - ./controllers/" + controller + ".js", colors.Reset);
 				var method = require(`./controllers/${api_version[0]}`)[controller][def.method];
-				if(def.schema) {
-					app[verb](url, Validatior.validate(def.schema), method);
-				}else{
-					app[verb](url, method);
-				}
+				app[verb](url, Validatior.validate(def), method);
 			}
 		})
 	})
