@@ -1,0 +1,92 @@
+{
+	"id": "e59cd3d0-269a-408d-a3a4-e1b3635605b8",
+	"name": "api",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"69ee2b9f-84b6-4f20-9a05-d49dd5a61170",
+		"028f55e9-ad7e-4397-97fb-239e1d0d247f",
+		"a79a1c30-b109-4c9b-a5a8-4793c7ae2f7d"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "028f55e9-ad7e-4397-97fb-239e1d0d247f",
+			"name": "Login",
+			"url": "http://{{host}}:{{port}}/user/login",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "69ee2b9f-84b6-4f20-9a05-d49dd5a61170",
+			"name": "Register",
+			"url": "http://{{host}}:{{port}}/user/register",
+			"description": "Register New User",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a79a1c30-b109-4c9b-a5a8-4793c7ae2f7d",
+			"name": "Get Profile",
+			"url": "http://{{host}}:{{port}}/user/profile",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}

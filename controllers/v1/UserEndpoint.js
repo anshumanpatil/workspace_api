@@ -1,4 +1,4 @@
-const models = require('@models');
+const {User_Master, User_Details} = models = require('@models');
 const errorCodes = require('@lib/error-codes')
 const constants = require('@lib/constants')
 const jwt = require('jsonwebtoken');
@@ -9,17 +9,40 @@ module.exports = class UserEndpoint {
     }
 
     getProfile(req, res){
-        res.status(200).json(req.body);
+        User_Details.findOne({ 
+            where: { user_id : req.body.userId },
+            raw : true
+        })
+        .then(function (profile) {
+            if(!profile){
+                res.status(errorCodes.NOTFOUND).json({
+                    "success": false,
+                    "error": "Not Found!"
+                });
+            }else{
+                res.status(errorCodes.OK).json({
+                    "success": true,
+                    "profile": profile
+                });
+            }
+            
+        })
+        
     }
 
     login(req, res){
-        models.User_Master.findOne({ 
+        User_Master.findOne({ 
             where: { user_email : req.body.user_email },
+            //attributes: ['user_email'],
             raw : true
         })
         .then(function (user) {
-            if (user && models.User_Master.validPassword(req.body.user_password, user.user_password)) {
-                delete user.user_password;
+            if (user && User_Master.validPassword(req.body.user_password, user.user_password)) {
+                
+                let __userResult = {
+                    id : user.id,
+                    user_email : user.user_email
+                }
                 let __token = jwt.sign({ id: user.id }, constants.secret, {
                     expiresIn: 86400 // expires in 24 hours
                 });
@@ -27,14 +50,16 @@ module.exports = class UserEndpoint {
                 return res.status(errorCodes.OK).json({
                     "success" : true,
                     "token" : __token,
-                    "user" : user
+                    "user" : __userResult
                 })
             } else if (!user) {
                 return res.status(errorCodes.UNAUTHORIZED).json({
+                    "success" : false,
                     "error" : "User not found!"
                 })
-            } else if (!models.User_Master.validPassword(req.body.user_password, user.user_password)) {
+            } else if (!User_Master.validPassword(req.body.user_password, user.user_password)) {
                 return res.status(errorCodes.UNAUTHORIZED).json({
+                    "success" : false,
                     "error" : "Password missmath!"
                 })
             } else {
@@ -42,26 +67,30 @@ module.exports = class UserEndpoint {
             }
         });
     }
-    
 
     register(req, res) {
         models.sequelize.transaction(function(t) {
-            return models.User_Master.findOrCreate({
+            return User_Master.findOrCreate({
                 where : req.body,
+                raw : true,
                 transaction : t
             }).spread(function(userResult, created) {
+                let __userResult = {
+                    id : userResult.id,
+                    user_email : userResult.user_email
+                }
                 if (created) {
                     return {
                         success : true,
                         status: errorCodes.OK,
-                        user : userResult
+                        user : __userResult
                     };
                 } else {
                     return {
                         success : false,
                         status : errorCodes.CONFLICT,
                         error : 'User already exists!!',
-                        user : userResult
+                        user : __userResult
                     };
                 }
             }).then(result=>{
