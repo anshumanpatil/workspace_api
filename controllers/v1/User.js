@@ -1,5 +1,5 @@
-let models = require('../db/models');
-let colors = require('../lib/colors');
+let models = require('../../db/models');
+let colors = require('../../lib/colors');
 
 function register(req, res, next) {
 	models.sequelize.transaction(function(t) {
