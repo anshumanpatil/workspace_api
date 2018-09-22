@@ -9,7 +9,13 @@ const app = express();
 const cors = require('cors');
 const Validatior = require('./lib/validatorMiddleware');
 const colors = require('./lib/colors');
-
+const moduleAlias = require('module-alias')
+/*  Add Path Aliases  */
+moduleAlias.addAliases({
+	'@models'  : __dirname + '/db/models',
+	'@colors'  : __dirname + '/lib/colors'
+})
+/* ------------------------- */ 
 app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);

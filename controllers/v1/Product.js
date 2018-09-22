@@ -1,5 +1,5 @@
-let models = require('../../db/models');
-let colors = require('../../lib/colors');
+let models = require('@models');
+let colors = require('@models');
 
 function getCatagories(req, res, next) {
 	return models.Catagory.findAll().then(catagoryResult=>{
