@@ -13,7 +13,8 @@ const moduleAlias = require('module-alias')
 /*  Add Path Aliases  */
 moduleAlias.addAliases({
 	'@models'  : __dirname + '/db/models',
-	'@colors'  : __dirname + '/lib/colors'
+	'@colors'  : __dirname + '/lib/colors',
+	'@lib'  : __dirname + '/lib'
 })
 /* ------------------------- */ 
 app.use(cors());

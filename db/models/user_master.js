@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs'); 
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var User_Master = sequelize.define('User_Master', {
@@ -7,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
           primaryKey: true,
           type: DataTypes.INTEGER
         },
-        user_name: {
+        user_email: {
           type: DataTypes.STRING
         },
         user_password: {
@@ -28,5 +29,20 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  
+  User_Master.validPassword = (user_password, hashed_password) => {
+    return bcrypt.compareSync(user_password, hashed_password);
+  };
+
+  User_Master.beforeCreate((user, options) => {
+    return bcrypt.hash(user.user_password, 10)
+        .then(hash => {
+            user.user_password = hash;
+        })
+        .catch(err => { 
+            throw new Error(); 
+        });
+  });
+
   return User_Master;
 };
