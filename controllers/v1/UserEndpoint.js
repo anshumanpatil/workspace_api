@@ -1,6 +1,7 @@
 const {User_Master, User_Details} = models = require('@models');
 const errorCodes = require('@lib/error-codes')
-const constants = require('@lib/constants')
+const constants = require('@lib/constants');
+const errorMessages = require('@lib/error-spells');
 const jwt = require('jsonwebtoken');
 
 module.exports = class UserEndpoint {
@@ -17,7 +18,7 @@ module.exports = class UserEndpoint {
             if(!profile){
                 res.status(errorCodes.NOTFOUND).json({
                     "success": false,
-                    "error": "Not Found!"
+                    "error": errorMessages.PROFILE_NOT_FOUND
                 });
             }else{
                 res.status(errorCodes.OK).json({
@@ -33,7 +34,6 @@ module.exports = class UserEndpoint {
     login(req, res){
         User_Master.findOne({ 
             where: { user_email : req.body.user_email },
-            //attributes: ['user_email'],
             raw : true
         })
         .then(function (user) {
@@ -55,12 +55,12 @@ module.exports = class UserEndpoint {
             } else if (!user) {
                 return res.status(errorCodes.UNAUTHORIZED).json({
                     "success" : false,
-                    "error" : "User not found!"
+                    "error" : errorMessages.USER_NOT_FOUND
                 })
             } else if (!User_Master.validPassword(req.body.user_password, user.user_password)) {
                 return res.status(errorCodes.UNAUTHORIZED).json({
                     "success" : false,
-                    "error" : "Password missmath!"
+                    "error" : errorMessages.PASSWORD_ISSMATH
                 })
             } else {
                 return res.status(errorCodes.FORBIDDEN).json(user)
@@ -89,7 +89,7 @@ module.exports = class UserEndpoint {
                     return {
                         success : false,
                         status : errorCodes.CONFLICT,
-                        error : 'User already exists!!',
+                        error : errorMessages.USER_ALREADY_EXISTS,
                         user : __userResult
                     };
                 }
