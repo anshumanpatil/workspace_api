@@ -9,9 +9,29 @@ module.exports = class UserEndpoint {
 
     }
 
+    putProfile(req, res){
+        models.sequelize.transaction(function(t) {
+            return User_Details.findOrCreate({
+                where : req.body,
+                raw : true,
+                transaction : t
+            }).spread(function(userResult, created) {
+                return {
+                    "success": true,
+                    "profile":userResult
+                };
+            }).then(result=>{
+                return res.status(errorCodes.OK).json({
+                    ...result
+                });
+            })
+        })   
+    }
+
     getProfile(req, res){
+        console.log(req.body)
         User_Details.findOne({ 
-            where: { user_id : req.body.userId },
+            where: { user_id : req.body.user_id },
             raw : true
         })
         .then(function (profile) {
@@ -25,10 +45,8 @@ module.exports = class UserEndpoint {
                     "success": true,
                     "profile": profile
                 });
-            }
-            
+            }   
         })
-        
     }
 
     login(req, res){
@@ -44,7 +62,7 @@ module.exports = class UserEndpoint {
                     user_email : user.user_email
                 }
                 let __token = jwt.sign({ id: user.id }, constants.secret, {
-                    expiresIn: 86400 // expires in 24 hours
+                    expiresIn: 600 // expires in 10 min
                 });
                 
                 return res.status(errorCodes.OK).json({

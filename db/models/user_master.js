@@ -35,7 +35,6 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   User_Master.beforeCreate((user, options) => {
-    console.log("\n\n\nuser_password",user.user_password,"\n\n\n")
     return bcrypt.hash(user.user_password, 10)
         .then(hash => {
             user.user_password = hash;

@@ -69,7 +69,7 @@ app.use(function(err, req, res, next) {
 	  return res.status(err.output.statusCode).json(err.output)
 	  
   }
-  
+  console.log("\n\n\n error",  err , "\n\n\n");
   // render the error page
   res.status(err.status || 500);
   res.render('error', { errorString : err.message });
