@@ -10,22 +10,11 @@ module.exports = class UserEndpoint {
     }
 
     putProfile(req, res){
-        models.sequelize.transaction(function(t) {
-            return User_Profile.findOrCreate({
-                where : req.body,
-                raw : true,
-                transaction : t
-            }).spread(function(userResult, created) {
-                return {
-                    "success": true,
-                    "profile":userResult
-                };
-            }).then(result=>{
-                return res.status(errorCodes.OK).json({
-                    ...result
-                });
-            })
-        })   
+        return User_Profile.createOrEditProfile(req.body)
+        .then(result=>{
+            res.status(errorCodes.OK).json(result);
+        })
+        
     }
 
     getProfile(req, res){

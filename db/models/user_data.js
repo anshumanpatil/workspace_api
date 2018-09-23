@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var User_data = sequelize.define('User_data', {
-      id: {
+      user_data_id: {
           allowNull: false,
           primaryKey: true,
           type: DataTypes.UUID,
@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         }
   }, {
     timestamps: false,
+    freezeTableName: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here

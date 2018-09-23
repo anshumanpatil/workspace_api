@@ -23,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.DATE
         }
   }, {
+    freezeTableName: true,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
