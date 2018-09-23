@@ -2,9 +2,9 @@ let models = require('../models');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return models.User_Details.sync();
+        return models.User_Profile.sync();
     },
     down: function(queryInterface, Sequelize) {
-        return models.User_Details.drop();
+        return models.User_Profile.drop();
     }
 };

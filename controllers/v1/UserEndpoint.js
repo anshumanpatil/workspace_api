@@ -1,4 +1,4 @@
-const {User_Master, User_Details} = models = require('@models');
+const {User_Master, User_Profile} = models = require('@models');
 const errorCodes = require('@lib/error-codes')
 const constants = require('@lib/constants');
 const errorMessages = require('@lib/error-spells');
@@ -11,7 +11,7 @@ module.exports = class UserEndpoint {
 
     putProfile(req, res){
         models.sequelize.transaction(function(t) {
-            return User_Details.findOrCreate({
+            return User_Profile.findOrCreate({
                 where : req.body,
                 raw : true,
                 transaction : t
@@ -30,7 +30,7 @@ module.exports = class UserEndpoint {
 
     getProfile(req, res){
         console.log(req.body)
-        User_Details.findOne({ 
+        User_Profile.findOne({ 
             where: { user_id : req.body.user_id },
             raw : true
         })

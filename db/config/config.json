@@ -2,7 +2,7 @@
     "development": {
         "username": "root",
         "password": "root",
-        "database": "pharma_development",
+        "database": "api_development",
         "host": "127.0.0.1",
         "dialect": "mysql",
         "port": "8889",
@@ -16,7 +16,7 @@
     "test": {
         "username": "mvelopes",
         "password": "mvelopes",
-        "database": "pharma_test",
+        "database": "api_test",
         "host": "127.0.0.1",
         "dialect": "mysql",
         "pool": {

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var User_Details = sequelize.define('User_Details', {
+  var User_Profile = sequelize.define('User_Profile', {
 	      id: {
 	    	  allowNull: false,
           primaryKey: true,
@@ -34,5 +34,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return User_Details;
+  return User_Profile;
 };
