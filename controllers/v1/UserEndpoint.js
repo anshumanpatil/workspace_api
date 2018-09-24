@@ -12,7 +12,23 @@ module.exports = class UserEndpoint {
     putProfile(req, res){
         return User_Profile.createOrEditProfile(req.body)
         .then(result=>{
-            res.status(errorCodes.OK).json(result);
+            User_data.findOne({ 
+                where: { user_id : req.body.user_id },
+                include : [{model:User_Profile, as: 'profile'}],
+                raw : true
+            }).then(__profile => {
+                if(!__profile){
+                    res.status(errorCodes.NOTFOUND).json({
+                        "success": false,
+                        "error": errorMessages.PROFILE_NOT_FOUND
+                    });
+                }else{
+                    res.status(errorCodes.OK).json({
+                        "success": true,
+                        "profile": models.commonMethods.cleanResult(__profile)
+                    });
+                } 
+            })
         })
     }
 
@@ -22,7 +38,6 @@ module.exports = class UserEndpoint {
             include : [{model:User_Profile, as: 'profile'}],
             raw : true
         }).then(__profile => {
-            console.log("__profile", __profile);
             if(!__profile){
                 res.status(errorCodes.NOTFOUND).json({
                     "success": false,
@@ -31,7 +46,7 @@ module.exports = class UserEndpoint {
             }else{
                 res.status(errorCodes.OK).json({
                     "success": true,
-                    "profile": __profile
+                    "profile": models.commonMethods.cleanResult(__profile)
                 });
             } 
         })

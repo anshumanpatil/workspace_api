@@ -38,4 +38,21 @@ db.User_data.belongsTo(db.User_Profile, { foreignKey:'profile_id' , as: 'profile
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Remove id's from result
+db.commonMethods = {
+  cleanResult : (res) => {
+    let __newResult = Object.assign({}, res);
+    let __return = {};
+    for (const key in __newResult) {
+      let newKey = key.split('.')[1];
+      
+      if(key.indexOf('_id')<0) {
+        __return[newKey] = __newResult[key];
+      }
+  }
+    return __return;
+  }
+
+}
+
 module.exports = db;
