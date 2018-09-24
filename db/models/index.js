@@ -32,7 +32,7 @@ Object.keys(db).forEach(function(modelName) {
 
 
 
-//db.User_Master.hasOne(db.User_Details, { foreignKey:'user_id' });
+db.User_data.belongsTo(db.User_Profile, { foreignKey:'profile_id' , as: 'profile' });
 
 
 db.sequelize = sequelize;

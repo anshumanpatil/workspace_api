@@ -30,7 +30,7 @@ module.exports = {
             public: false,
             schema : {
                 body: {
-                    user_email: Joi.string().required()
+                    user_email: Joi.string()
                 }
             }
         },

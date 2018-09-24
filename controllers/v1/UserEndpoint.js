@@ -1,4 +1,4 @@
-const {User_Master, User_Profile} = models = require('@models');
+const {User_Master, User_Profile, User_data} = models = require('@models');
 const errorCodes = require('@lib/error-codes')
 const constants = require('@lib/constants');
 const errorMessages = require('@lib/error-spells');
@@ -14,17 +14,16 @@ module.exports = class UserEndpoint {
         .then(result=>{
             res.status(errorCodes.OK).json(result);
         })
-        
     }
 
     getProfile(req, res){
-        console.log(req.body)
-        User_Profile.findOne({ 
+        User_data.findOne({ 
             where: { user_id : req.body.user_id },
+            include : [{model:User_Profile, as: 'profile'}],
             raw : true
-        })
-        .then(function (profile) {
-            if(!profile){
+        }).then(__profile => {
+            console.log("__profile", __profile);
+            if(!__profile){
                 res.status(errorCodes.NOTFOUND).json({
                     "success": false,
                     "error": errorMessages.PROFILE_NOT_FOUND
@@ -32,9 +31,9 @@ module.exports = class UserEndpoint {
             }else{
                 res.status(errorCodes.OK).json({
                     "success": true,
-                    "profile": profile
+                    "profile": __profile
                 });
-            }   
+            } 
         })
     }
 
@@ -51,7 +50,7 @@ module.exports = class UserEndpoint {
                     user_email : user.user_email
                 }
                 let __token = jwt.sign({ id: user.id }, constants.secret, {
-                    expiresIn: 600 // expires in 10 min
+                    expiresIn: 6000 // expires in 10 min
                 });
                 
                 return res.status(errorCodes.OK).json({
