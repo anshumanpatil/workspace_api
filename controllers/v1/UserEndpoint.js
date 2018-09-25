@@ -92,7 +92,9 @@ module.exports = class UserEndpoint {
     register(req, res) {
         models.sequelize.transaction(function(t) {
             return User_Master.findOrCreate({
-                where : req.body,
+                where : {
+                    "user_email" : req.body.user_email
+                },
                 raw : true,
                 transaction : t
             }).spread(function(userResult, created) {
