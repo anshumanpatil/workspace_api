@@ -1,8 +1,12 @@
 'use strict';
 module.exports = {
-    '/workout': {
+    '/workout/plan': {
         get: {
-            method: 'putWorkout',
+            method: 'getWorkoutPlan',
+            public: true
+        },
+        put: {
+            method: 'putWorkoutPlan',
             public: true
         }
     }

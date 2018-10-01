@@ -4,7 +4,15 @@ module.exports = class WorkoutEndpoint {
 
     }
 
-    putWorkout(req, res){
+    getWorkoutPlan(req, res){
+        return res.status(httpCodes.OK)
+        .json({
+            "success": true,
+            "workout": "workout"
+        });
+    }
+
+    putWorkoutPlan(req, res){
         return res.status(httpCodes.OK)
         .json({
             "success": true,
