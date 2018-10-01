@@ -5,6 +5,7 @@
         "database": "api_development",
         "host": "127.0.0.1",
         "dialect": "mysql",
+        "logging": false,
         "port": "8889",
         "pool": {
             "min": 5,
@@ -19,6 +20,7 @@
         "database": "api_test",
         "host": "127.0.0.1",
         "dialect": "mysql",
+        "logging": false,
         "pool": {
             "min": 5,
             "max": 10,

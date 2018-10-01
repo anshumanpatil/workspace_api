@@ -1,39 +1,43 @@
 {
-	"id": "e59cd3d0-269a-408d-a3a4-e1b3635605b8",
-	"name": "api",
-	"description": null,
-	"auth": null,
-	"events": null,
-	"variables": null,
-	"order": [
-		"69ee2b9f-84b6-4f20-9a05-d49dd5a61170",
-		"028f55e9-ad7e-4397-97fb-239e1d0d247f",
-		"a79a1c30-b109-4c9b-a5a8-4793c7ae2f7d",
-		"81dd82bb-7d46-4900-8e2b-ebab57496114"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
+	"info": {
+		"_postman_id": "e59cd3d0-269a-408d-a3a4-e1b3635605b8",
+		"name": "api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "028f55e9-ad7e-4397-97fb-239e1d0d247f",
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}"
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/user/register",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"register"
+					]
+				},
+				"description": "Register New User"
+			},
+			"response": []
+		},
+		{
 			"name": "Login",
-			"url": "http://{{host}}:{{port}}/user/login",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -46,97 +50,118 @@
 					}
 				}
 			],
-			"folder": null,
-			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "69ee2b9f-84b6-4f20-9a05-d49dd5a61170",
-			"name": "Register",
-			"url": "http://{{host}}:{{port}}/user/register",
-			"description": "Register New User",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "81dd82bb-7d46-4900-8e2b-ebab57496114",
-			"name": "Put Profile",
-			"url": "http://{{host}}:{{port}}/user/profile",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}"
 				},
-				{
-					"key": "Authorization",
-					"value": "{{token}}",
-					"description": "",
-					"enabled": true
+				"url": {
+					"raw": "http://{{host}}:{{port}}/user/login",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"login"
+					]
 				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n\t\"user_full_name\":\"aaa\",\n\t\"user_mobile\":\"8007804523\",\n\t\"user_email\":\"aaa\",\n\t\"user_address\":\"aaa\",\n\t\"user_dob\":\"1981-06-15\",\n\t\"user_doj\":\"1981-06-15\"\n}",
-			"headers": "Content-Type: application/json\nAuthorization: {{token}}\n",
-			"pathVariables": {}
+			},
+			"response": []
 		},
 		{
-			"id": "a79a1c30-b109-4c9b-a5a8-4793c7ae2f7d",
 			"name": "Get Profile",
-			"url": "http://{{host}}:{{port}}/user/profile",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\"\n}"
 				},
-				{
-					"key": "Authorization",
-					"value": "{{token}}",
-					"description": "",
-					"enabled": true
+				"url": {
+					"raw": "http://{{host}}:{{port}}/user/profile",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"profile"
+					]
 				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\"\n}",
-			"headers": "Content-Type: application/json\nAuthorization: {{token}}\n",
-			"pathVariables": {}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Profile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_full_name\":\"Anshuman Patil\",\n\t\"user_mobile\":\"8007804523\",\n\t\"user_address\":\"aaa\",\n\t\"user_dob\":\"1981-06-15\",\n\t\"user_doj\":\"1981-06-15\"\n}"
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/user/profile",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Workout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/workout",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"workout"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
