@@ -11,9 +11,40 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false,
           type: DataTypes.STRING
         },
-        workout_plan_sunday_id: {
+        workout_plan_sun_id: {
           allowNull: false,
-          type: DataTypes.STRING
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_mon_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_tue_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_wed_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_thu_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_fri_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+        },
+        workout_plan_sat_id: {
+          allowNull: false,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
         }
   }, {
     timestamps: false,

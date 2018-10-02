@@ -1,3 +1,4 @@
+const {Workout_Plan} = models = require('@models');
 const httpCodes = require('@lib/http-codes')
 module.exports = class WorkoutEndpoint {
     constructor(){
@@ -13,10 +14,13 @@ module.exports = class WorkoutEndpoint {
     }
 
     putWorkoutPlan(req, res){
-        return res.status(httpCodes.OK)
-        .json({
-            "success": true,
-            "workout": "workout"
-        });
+        let __body = req.body;
+        return models.commonMethods
+        .upsert(__body, __body, 'Workout_Plan')
+        .then(__newWorkoutPlan => {
+            return res.status(httpCodes.OK)
+            .json(__newWorkoutPlan);
+        })
+        
     }
 }

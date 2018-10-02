@@ -51,6 +51,23 @@ db.commonMethods = {
       }
   }
     return __return;
+  },
+  upsert : (_testAttr, _insertAttr, __modelName ) => {
+    return new Promise((acc,rej)=>{
+      db[__modelName].findOne({
+        where : _testAttr
+      }).then(__obj=>{
+        if(__obj) { 
+          return __obj.update(_insertAttr);
+        }
+        else { 
+            return db[__modelName].create(_insertAttr);
+        }
+      })
+      .then(result=>acc(result))
+      .catch(err=>rej(err))
+    })
+    
   }
 
 }

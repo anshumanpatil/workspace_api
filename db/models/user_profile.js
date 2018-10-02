@@ -49,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
 		return User_Profile.findOne({ 
 			where: __attributes 
 		})
-		.then(function(profile) {
+		.then(profile => {
 				if(profile) { // update
 						return profile.update(__body);
 				}
@@ -57,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
 						return User_Profile.create(__body);
 				}
 		})
-		.then(function(createdProfile) {
+		.then(createdProfile => {
 			return models.User_data.findOrCreate({
 				where : { 
 					"user_id" : user_id,

@@ -144,20 +144,50 @@
 			"response": []
 		},
 		{
-			"name": "Get Workout",
+			"name": "Get Workout Plan",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{host}}:{{port}}/workout",
+					"raw": "http://{{host}}:{{port}}/workout/plan",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}",
 					"path": [
-						"workout"
+						"workout",
+						"plan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Workout Plan",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"workout_plan_name\" : \"Plan For Anshuman\"\n}"
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/workout/plan",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"workout",
+						"plan"
 					]
 				}
 			},
