@@ -31,7 +31,7 @@ module.exports = {
         }
     },
     '/user/profile': {
-        post: {
+        get: {
             method: 'getProfile',
             public: false,
             schema : {
