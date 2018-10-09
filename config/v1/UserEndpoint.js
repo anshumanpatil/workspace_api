@@ -9,6 +9,9 @@ module.exports = {
                     user_email: Joi.string().required(),
                     user_password: Joi.string().required()
                 }
+            },
+            swagger: {
+                "name" : "login"
             }
         }
     },
@@ -21,6 +24,9 @@ module.exports = {
                     user_email: Joi.string().required(),
                     user_password: Joi.string().required()
                 }
+            },
+            swagger: {
+                "name" : "register"
             }
         }
     },
@@ -32,6 +38,9 @@ module.exports = {
                 body: {
                     user_email: Joi.string()
                 }
+            },
+            swagger: {
+                "name" : "getProfile"
             }
         },
         put: {
@@ -45,6 +54,9 @@ module.exports = {
                     user_dob: Joi.string().required(),
                     user_doj: Joi.string().required(),
                 }
+            },
+            swagger: {
+                "name" : "putProfile"
             }
         }
         
