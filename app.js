@@ -9,7 +9,10 @@ const app = express();
 const cors = require('cors');
 const Validatior = require('./lib/validatorMiddleware');
 const colors = require('./lib/colors');
-const moduleAlias = require('module-alias')
+const moduleAlias = require('module-alias');
+const swaggerUi = require('./doc');
+const swaggerDocument = require('./swagger.json');
+
 /*  Add Path Aliases  */
 moduleAlias.addAliases({
 	'@models'  : __dirname + '/db/models',
@@ -28,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const api_version = [
 	'v1'
