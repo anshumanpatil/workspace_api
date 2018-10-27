@@ -1,7 +1,7 @@
-const {User_Master, User_Profile, User_data} = models = require('@models');
-const httpCodes = require('@lib/http-codes')
-const constants = require('@lib/constants');
-const errorMessages = require('@lib/error-spells');
+const {User_Master, User_Profile, User_data} = models = require('../../db/models');
+const httpCodes = require('../../lib/http-codes')
+const constants = require('../../lib/constants');
+const errorMessages = require('../../lib/error-spells');
 const jwt = require('jsonwebtoken');
 
 module.exports = class UserEndpoint {

@@ -1,5 +1,5 @@
-const {Workout_Plan} = models = require('@models');
-const httpCodes = require('@lib/http-codes')
+const {Workout_Plan} = models = require('../../db/models');
+const httpCodes = require('../../lib/http-codes')
 module.exports = class WorkoutEndpoint {
     constructor(){
 
