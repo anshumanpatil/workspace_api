@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "e59cd3d0-269a-408d-a3a4-e1b3635605b8",
-		"name": "api",
+		"_postman_id": "e287db30-0f36-4c38-bc9d-7f98b623309c",
+		"name": "Infrastructure API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -80,7 +80,7 @@
 		{
 			"name": "Get Profile",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -142,56 +142,28 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "14afb86b-f9f7-4291-8b3a-574516168d4a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "Get Workout Plan",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/workout/plan",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"workout",
-						"plan"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Workout Plan",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"workout_plan_name\" : \"Plan For Anshuman\"\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/workout/plan",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"workout",
-						"plan"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"id": "93517cd6-d5a6-4a15-aa49-c4936ed7f78b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
