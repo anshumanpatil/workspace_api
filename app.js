@@ -12,7 +12,7 @@ const colors = require('./lib/colors');
 //const moduleAlias = require('module-alias');
 const swaggerUi = require('./doc');
 const swaggerDocument = require('./swagger.json');
-
+const package = require('./package.json');
 /*  Add Path Aliases  */
 // moduleAlias.addAliases({
 // 	'@models'  : __dirname + '/db/models',
@@ -71,8 +71,9 @@ _.each(swaggerPaths, (obj) => {
 		swaggerObject[key] = _.extend(swaggerObject[key],__obj);
 	})
 })
-
-swaggerDocument.paths = swaggerObject
+console.log()
+swaggerDocument.paths = swaggerObject;
+swaggerDocument.info = package.applicationInfo;
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
