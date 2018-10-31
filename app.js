@@ -31,16 +31,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+let swaggerPaths = [];
+let swaggerObject = {};
 const api_version = [
 	'v1'
 ]
 
 console.log("\n\n")
-_.each(require(`./config/${api_version[0]}`), function (controller) {
-	_.each(require(`./config/${api_version[0]}/` + controller), function (verbs, url) {
-		_.each(verbs, function (def, verb) {
+_.each(require(`./config/${api_version[0]}`),  controller => {
+	_.each(require(`./config/${api_version[0]}/` + controller),  (verbs, url) => {
+		_.each(verbs,  (def, verb) => {
 			if(def.hasOwnProperty("html") && def.html){
 				app.get(url, function(req, res) {
 					res.render(def.file);
@@ -48,12 +49,32 @@ _.each(require(`./config/${api_version[0]}`), function (controller) {
 			}else{
 				console.log(colors.bg.Blue, colors.fg.White, 'route ' + url + ' - method - ' ,colors.bg.Red, colors.fg.White, verb.toUpperCase(), colors.Reset, colors.bg.Blue, colors.fg.White,"From - ./controllers/" + controller + ".js", colors.Reset);
 				var method = require(`./controllers/${api_version[0]}`)[controller][def.method];
+				if(def['swagger']) {
+					let swaggerPathsObj = {};
+					let swaggerPathsMethod = {};
+					swaggerPathsMethod[verb] = def['swagger'];
+					swaggerPathsObj[url] = swaggerPathsMethod;
+					swaggerPaths.push(swaggerPathsObj);
+				}
 				app[verb](url, Validatior.validate(def), method);
 			}
 		})
 	})
 })
 console.log("\n\n")
+_.each(swaggerPaths, (obj) => { 
+	_.each(obj, (path,key) => { 
+		let __obj = {};
+		_.each(path, (method,methodKey) => { 
+			__obj[methodKey] = method;
+		})
+		swaggerObject[key] = _.extend(swaggerObject[key],__obj);
+	})
+})
+
+swaggerDocument.paths = swaggerObject
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
