@@ -1,7 +1,5 @@
-const {User_Master, User_Profile, User_data} = models = require('../../db/models');
+const {User_Master, User_Profile, User_data, mongoConnection} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
-const mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://localhost/users123');
 var User = require('../../mongo/schema/user');
 module.exports = class UserEndpoint {
     constructor(){
