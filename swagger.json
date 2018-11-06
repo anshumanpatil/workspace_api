@@ -11,7 +11,7 @@
   "paths": {
   },
   "securityDefinitions": {
-    "api_key": {
+    "Authorization": {
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"

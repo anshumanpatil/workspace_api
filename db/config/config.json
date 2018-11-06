@@ -2,11 +2,11 @@
     "development": {
         "username": "root",
         "password": "root",
-        "database": "api_development",
-        "host": "127.0.0.1",
+        "database": "niva_anshuman",
+        "host": "192.168.150.66",
+        "port" : "3306",
         "dialect": "mysql",
-        "logging": false,
-        "port": "8889",
+        "logging" : false,
         "pool": {
             "min": 5,
             "max": 10,
