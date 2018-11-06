@@ -1,47 +1,18 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "e59cd3d0-269a-408d-a3a4-e1b3635605b8",
-		"name": "api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "API",
+		"_postman_id": "1f68ecb9-fe82-5063-efa6-326917be08fe",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Register",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/user/register",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"user",
-						"register"
-					]
-				},
-				"description": "Register New User"
-			},
-			"response": []
-		},
 		{
 			"name": "Login",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "52c113de-a546-4ce7-9122-0df0f6ae3b72",
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
@@ -51,145 +22,121 @@
 				}
 			],
 			"request": {
+				"url": "http://{{host}}:{{port}}/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"url": "http://{{host}}:{{port}}/user/register",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\",\n\t\"user_password\":\"anshu7875797913\"\n}"
 				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/user/login",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"user",
-						"login"
-					]
-				}
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set Profile",
+			"request": {
+				"url": "http://{{host}}:{{port}}/profile",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Anshuman\",\n    \"middleName\": \"P\",\n    \"surName\": \"Patil\",\n    \"mobile\": \"7875797913\",\n    \"phone\": \"\",\n    \"address\": \"B-303, Laukik Ishaan, Kolhewadi\",\n    \"pincode\": \"411024\",\n    \"city\": \"Pune\",\n    \"admin\": false\n}"
+				},
+				"description": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Get Profile",
 			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"user_email\":\"anshu7875797913@gmail.com\"\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/user/profile",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"user",
-						"profile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Put Profile",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"user_full_name\":\"Anshuman Patil\",\n\t\"user_mobile\":\"8007804523\",\n\t\"user_address\":\"aaa\",\n\t\"user_dob\":\"1981-06-15\",\n\t\"user_doj\":\"1981-06-15\"\n}"
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/user/profile",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"user",
-						"profile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Workout Plan",
-			"request": {
+				"url": "http://{{host}}:{{port}}/profile",
 				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/workout/plan",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"workout",
-						"plan"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Workout Plan",
-			"request": {
-				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"workout_plan_name\" : \"Plan For Anshuman\"\n}"
+					"raw": "{\n    \"name\": \"Anshuman\",\n    \"middleName\": \"P\",\n    \"surName\": \"Patil\",\n    \"mobile\": \"7875797913\",\n    \"phone\": \"\",\n    \"address\": \"B-303, Laukik Ishaan, Kolhewadi\",\n    \"pincode\": \"411024\",\n    \"city\": \"Pune\",\n    \"admin\": false\n}"
 				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/workout/plan",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"workout",
-						"plan"
-					]
-				}
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"url": "http://{{host}}:{{port}}/profile",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Anshuman\",\n    \"middleName\": \"P\",\n    \"surName\": \"Patil\",\n    \"mobile\": \"7875797913\",\n    \"phone\": \"\",\n    \"address\": \"B-303, Laukik Ishaan, Kolhewadi\",\n    \"pincode\": \"411024\",\n    \"city\": \"Pune\",\n    \"admin\": false\n}"
+				},
+				"description": ""
 			},
 			"response": []
 		}

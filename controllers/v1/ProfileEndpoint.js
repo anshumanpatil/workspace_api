@@ -7,21 +7,29 @@ module.exports = class ProfileEndpoint {
     }
     
     postProfile(req, res){
-        let __profile = {user_id:req.headers.user_id, ...req.body};
+        let __profile = { "user_id" : req.headers.user_id, ...req.body};
         
         Profile.findOneOrCreate({user_id:req.headers.user_id},__profile, (err, profile) => {
-            res.status(httpCodes.OK).json({
+            return res.status(httpCodes.OK).json({
                 "success": true,
                 "profile": profile
             });
         });
-        
     }
 
     updateProfile(req, res){
-        res.status(httpCodes.OK).json({
-            "success": true,
-            "profile": "Mongo"
+        let __profile = { "user_id" : req.headers.user_id, ...req.body };
+        var query = { "user_id" : req.headers.user_id };
+        
+        Profile.findOneAndUpdate(query, __profile, { upsert : true }, (err, profile) => {
+            if (err || !profile) {
+                return res.status(500).json({ error : "No profile found" })
+            }else{
+                return res.status(httpCodes.OK).json({
+                    "success": true,
+                    "profile": profile
+                });
+            }
         });
     }
 
@@ -32,12 +40,12 @@ module.exports = class ProfileEndpoint {
         }).lean().limit(1)
         .exec(function(error, result) {
             if (error) { 
-                res.status(httpCodes.NOTFOUND).json({
+                return res.status(httpCodes.NOTFOUND).json({
                     "success": false,
                     "error": error
                 });
             }else{
-                res.status(httpCodes.OK).json({
+                return res.status(httpCodes.OK).json({
                     "success": true,
                     "profile": result
                 });

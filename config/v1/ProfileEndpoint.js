@@ -21,7 +21,8 @@ module.exports = {
         },
         put: {
             method: 'updateProfile',
-            public: false
+            public: false,
+            schema : {}
             
         },
         get: {

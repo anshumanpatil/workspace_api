@@ -23,7 +23,7 @@ var profileSchema = new Schema({
 
 profileSchema.statics.findOneOrCreate = function (condition, doc, callback) {
   const self = this;
-  self.findOne(condition, (err, result) => {
+  self.findOne(condition, '-_id', (err, result) => {
     return result 
       ? callback(err, {created:false, ...result.toObject()})
       : self.create(doc, (err, result) => {
