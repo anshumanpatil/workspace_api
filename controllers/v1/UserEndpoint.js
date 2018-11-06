@@ -1,4 +1,4 @@
-const {User_Master, User_Profile, User_data} = models = require('../../db/models');
+const {User_Master} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
 const constants = require('../../lib/constants');
 const errorMessages = require('../../lib/error-spells');
@@ -7,49 +7,6 @@ const jwt = require('jsonwebtoken');
 module.exports = class UserEndpoint {
     constructor(){
 
-    }
-
-    putProfile(req, res){
-        return User_Profile.createOrEditProfile(req.body)
-        .then(result=>{
-            User_data.findOne({ 
-                where: { user_id : req.body.user_id },
-                include : [{model:User_Profile, as: 'profile'}],
-                raw : true
-            }).then(__profile => {
-                if(!__profile){
-                    res.status(httpCodes.NOTFOUND).json({
-                        "success": false,
-                        "error": errorMessages.PROFILE_NOT_FOUND
-                    });
-                }else{
-                    res.status(httpCodes.OK).json({
-                        "success": true,
-                        "profile": models.commonMethods.cleanResult(__profile)
-                    });
-                } 
-            })
-        })
-    }
-
-    getProfile(req, res){
-        User_data.findOne({ 
-            where: { user_id : req.body.user_id },
-            include : [{model:User_Profile, as: 'profile'}],
-            raw : true
-        }).then(__profile => {
-            if(!__profile){
-                res.status(httpCodes.NOTFOUND).json({
-                    "success": false,
-                    "error": errorMessages.PROFILE_NOT_FOUND
-                });
-            }else{
-                res.status(httpCodes.OK).json({
-                    "success": true,
-                    "profile": models.commonMethods.cleanResult(__profile)
-                });
-            } 
-        })
     }
 
     login(req, res){

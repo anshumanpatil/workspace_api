@@ -5,11 +5,5 @@ module.exports = {
             file: 'index',
             html: true
         }
-    },
-    '/login': {
-        get: {
-            file: 'login',
-            html: true
-        }
     }
 };

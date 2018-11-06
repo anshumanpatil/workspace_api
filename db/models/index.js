@@ -7,6 +7,14 @@ var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require('../config/config.json')[env];
 var db        = {};
+const mongoose = require('mongoose');
+
+let dev_db_url = 'mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp';
+let mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+let mongoConnection = mongoose.connection;
+mongoConnection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -30,46 +38,8 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-
-
-db.User_data.belongsTo(db.User_Profile, { foreignKey:'profile_id' , as: 'profile' });
-
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-// Remove id's from result
-db.commonMethods = {
-  cleanResult : (res) => {
-    let __newResult = Object.assign({}, res);
-    let __return = {};
-    for (const key in __newResult) {
-      let newKey = key.split('.')[1];
-      
-      if(key.indexOf('_id')<0) {
-        __return[newKey] = __newResult[key];
-      }
-  }
-    return __return;
-  },
-  upsert : (_testAttr, _insertAttr, __modelName ) => {
-    return new Promise((acc,rej)=>{
-      db[__modelName].findOne({
-        where : _testAttr
-      }).then(__obj=>{
-        if(__obj) { 
-          return __obj.update(_insertAttr);
-        }
-        else { 
-            return db[__modelName].create(_insertAttr);
-        }
-      })
-      .then(result=>acc(result))
-      .catch(err=>rej(err))
-    })
-    
-  }
-
-}
+db.mongoConnection = mongoConnection;
 
 module.exports = db;
