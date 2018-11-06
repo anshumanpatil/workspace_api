@@ -10,7 +10,6 @@ module.exports = class ProfileEndpoint {
         let __profile = { "user_id" : req.headers.user_id, ...req.body};
         
         Profile.findOneOrCreate({user_id:req.headers.user_id},__profile, (err, profile) => {
-            console.log(profile)
             return res.status(((profile.created) ? httpCodes.OK : httpCodes.CONFLICT)).json({
                 "success": true,
                 "profile": profile
@@ -24,7 +23,7 @@ module.exports = class ProfileEndpoint {
         
         Profile.findOneAndUpdate(query, __profile, { upsert : true }, (err, profile) => {
             if (err || !profile) {
-                return res.status(500).json({ error : "No profile found" })
+                return res.status(httpCodes.NOTFOUND).json({ error : "No profile found" })
             }else{
                 return res.status(httpCodes.OK).json({
                     "success": true,

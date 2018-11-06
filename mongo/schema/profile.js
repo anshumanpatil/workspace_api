@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 var Schema = mongoose.Schema;
 
-// create a schema
 var profileSchema = new Schema({
   _id: { type: String, default: function genUUID() {
       return uuid.v1()
