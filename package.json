@@ -17,7 +17,9 @@
     }
   },
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "start:office": "NODE_ENV=office nodemon ./bin/www",
+    "start:home": "NODE_ENV=home nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^2.6.0",

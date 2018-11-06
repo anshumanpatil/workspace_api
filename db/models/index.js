@@ -4,12 +4,12 @@ var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || 'development';
+var env       = process.env.NODE_ENV || 'home';
 var config    = require('../config/config.json')[env];
 var db        = {};
 const mongoose = require('mongoose');
 
-let dev_db_url = 'mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp';
+let dev_db_url = (env=='home') ? 'mongodb://localhost/users123' : 'mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
