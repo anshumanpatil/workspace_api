@@ -2,7 +2,7 @@
   "name": "health-app",
   "version": "0.0.0",
   "private": true,
-  "swagger-path": "/api-doc",
+  "swaggerPath": "/api-doc",
   "applicationInfo": {
     "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
     "version": "1.0.0",
@@ -17,9 +17,7 @@
     }
   },
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "start:office": "NODE_ENV=office nodemon ./bin/www",
-    "start:home": "NODE_ENV=home nodemon ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -39,14 +37,10 @@
     "lodash": "^4.17.10",
     "module-alias": "^2.1.0",
     "moment": "^2.22.2",
-    "mongoose": "^5.3.8",
     "morgan": "~1.9.0",
-    "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "node-uuid": "^1.4.8",
     "nodemon": "^1.17.3",
-    "pg": "^7.4.1",
-    "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
     "serve-favicon": "~2.4.2",

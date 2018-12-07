@@ -3,7 +3,7 @@
         "username": "root",
         "password": "root",
         "database": "niva_anshuman",
-        "host": "192.168.150.66",
+        "host": "192.168.111.35",
         "port" : "3306",
         "dialect": "mysql",
         "logging" : false,
@@ -14,7 +14,7 @@
             "idle": 60000
         }
     },
-    "office": {
+    "test": {
         "username": "root",
         "password": "root",
         "database": "niva_anshuman",
@@ -28,48 +28,5 @@
             "acquire": 30000,
             "idle": 60000
         }
-    },
-    "home": {
-        "username": "root",
-        "password": "root",
-        "database": "api_development",
-        "host": "127.0.0.1",
-        "port" : "8889",
-        "dialect": "mysql",
-        "logging" : false,
-        "pool": {
-            "min": 5,
-            "max": 10,
-            "acquire": 30000,
-            "idle": 60000
-        }
-    },
-    "test": {
-        "username": "mvelopes",
-        "password": "mvelopes",
-        "database": "api_test",
-        "host": "127.0.0.1",
-        "dialect": "mysql",
-        "logging": false,
-        "pool": {
-            "min": 5,
-            "max": 10,
-            "acquire": 30000,
-            "idle": 60000
-        }
-    },
-    "production": {
-        "dialect": "mysql",
-        "pool": {
-            "min": 5,
-            "max": 10
-        },
-        "ssl": true,
-        "dialectOptions": {
-            "ssl": {
-                "require": true
-            }
-        },
-        "use_env_variable": "DATABASE_URL"
     }
 }

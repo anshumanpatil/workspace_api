@@ -76,8 +76,8 @@ console.log()
 swaggerDocument.paths = swaggerObject;
 swaggerDocument.info = package.applicationInfo;
 
-if(package.swagger-path){
-	app.use( package.swagger-path , swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+if(package.swaggerPath){
+	app.use( package.swaggerPath , swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 
 // catch 404 and forward to error handler
