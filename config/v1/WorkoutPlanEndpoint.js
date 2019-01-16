@@ -1,13 +1,13 @@
 'use strict';
 let planItem = Joi.object().keys({
     index: Joi.number(),
-    planId: Joi.string(),
+    workoutId: Joi.string(),
 })
   
 module.exports = {
     '/workout/plan': {
         post: {
-            method: 'workout',
+            method: 'workoutPlan',
             public: false,
             schema : {
                 body: {
@@ -23,7 +23,12 @@ module.exports = {
             }
         },
         get:{
-            method: 'getWorkout',
+            method: 'getWorkoutPlan',
+            public: false,
+            schema : {}
+        },
+        delete:{
+            method: 'deleteWorkoutPlan',
             public: false,
             schema : {}
         }

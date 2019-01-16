@@ -2,19 +2,25 @@ var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 var Schema = mongoose.Schema;
 
+
+var subSchema = Schema({
+  index: Number, 
+  workoutId: String
+},{ _id : false });
+
 var workout_planSchema = new Schema({
   _id: { type: String, default: function genUUID() {
       return uuid.v1()
   }},
   user_id: String,
   plan_name: String,
-  mon: [{index: Number , planId: String}],
-  tue: [{index: Number , planId: String}],
-  wed: [{index: Number , planId: String}],
-  thu: [{index: Number , planId: String}],
-  fri: [{index: Number , planId: String}],
-  sat: [{index: Number , planId: String}],
-  sun: [{index: Number , planId: String}]
+  mon: [subSchema],
+  tue: [subSchema],
+  wed: [subSchema],
+  thu: [subSchema],
+  fri: [subSchema],
+  sat: [subSchema],
+  sun: [subSchema]
 }, { versionKey: false });
 
 workout_planSchema.statics.findOneOrCreate = function (condition, doc, callback) {

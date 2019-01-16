@@ -16,9 +16,18 @@ module.exports = {
             }
         },
         get:{
-            method: 'getExercise',
+            method: 'getAllExercise',
             public: false,
             schema : {}
+        },
+        delete:{
+            method: 'deleteExercise',
+            public: false,
+            schema : {
+                body: {
+                    workout_id: Joi.string().required()
+                }
+            }
         }
     }
 };
