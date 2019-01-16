@@ -2,7 +2,9 @@ const {User_Master} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
 const constants = require('../../lib/constants');
 const errorMessages = require('../../lib/error-spells');
-var Workout_Plan = require('../../mongo/schema/workout_plan');
+const Workout_Plan = require('../../mongo/schema/workout_plan');
+const Workout = require('../../mongo/schema/workout');
+const _ = require('lodash');
 module.exports = class WorkoutPlanEndpoint {
     constructor(){
 
@@ -21,7 +23,7 @@ module.exports = class WorkoutPlanEndpoint {
     getWorkoutPlan(req, res){
         Workout_Plan.find({
             "user_id": req.headers.user_id
-        }).lean().limit(1)
+        })
         .exec(function(error, result) {
             if (error) { 
                 return res.status(httpCodes.NOTFOUND).json({

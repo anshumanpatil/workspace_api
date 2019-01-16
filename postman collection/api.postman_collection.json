@@ -159,7 +159,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"plan_name\":\"Some Plan\",\n\t\"mon\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"tue\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"wed\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"thu\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"fri\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"sat\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"sun\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }]\n}\n\n"
+					"raw": "{\n\t\"plan_name\":\"Back - Biceps\",\n\t\"mon\": [{\n        \"index\": 1,\n        \"workoutId\": \"3c205ae0-198c-11e9-9f27-6999e7f81944\"\n    }, {\n        \"index\": 2,\n        \"workoutId\": \"3c205ae0-198c-11e9-9f27-6999e7f81944\"\n    }, {\n        \"index\": 3,\n        \"workoutId\": \"3c205ae0-198c-11e9-9f27-6999e7f81944\"\n    }, {\n        \"index\": 4,\n        \"workoutId\": \"3c205ae0-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"tue\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"wed\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"thu\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"fri\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"sat\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }],\n    \"sun\": [{\n        \"index\": 1,\n        \"workoutId\": \"400d7390-198c-11e9-9f27-6999e7f81944\"\n    }]\n}\n\n"
 				},
 				"description": ""
 			},
@@ -209,9 +209,59 @@
 						"key": "Authorization",
 						"value": "{{token}}",
 						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Inclined Bench Press\",\n\t\"imageLinks\" : [\n\t\t{\"link\": \"img link 1\"},\n\t\t{\"link\": \"img link 2\"},\n\t\t{\"link\": \"img link 3\"},\n\t\t{\"link\": \"img link 4\"},\n\t\t{\"link\": \"img link 5\"}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete WorkoutPlan",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/plan",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
 					}
 				],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Exercise",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/exercise",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"workout_id\":\"3c205ae0-198c-11e9-9f27-6999e7f81944\"\n}"
+				},
 				"description": ""
 			},
 			"response": []
