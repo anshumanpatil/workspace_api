@@ -11,7 +11,10 @@ const mongoose = require('mongoose');
 
 let dev_db_url = (env=='home') ? 'mongodb://localhost/users123' : 'mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { 
+  useCreateIndex: true,
+  useNewUrlParser: true
+ });
 mongoose.Promise = global.Promise;
 let mongoConnection = mongoose.connection;
 mongoConnection.on('error', console.error.bind(console, 'MongoDB connection error:'));

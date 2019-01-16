@@ -11,7 +11,7 @@ module.exports = class ProfileEndpoint {
         
         Profile.findOneOrCreate({user_id:req.headers.user_id},__profile, (err, profile) => {
             return res.status(((profile.created) ? httpCodes.OK : httpCodes.CONFLICT)).json({
-                "success": true,
+                "success": profile.created,
                 "profile": profile
             });
         });

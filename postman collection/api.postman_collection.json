@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "API",
-		"_postman_id": "1f68ecb9-fe82-5063-efa6-326917be08fe",
+		"_postman_id": "fb3a7287-8690-d5bc-df62-c11491e3a540",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -136,6 +136,82 @@
 					"mode": "raw",
 					"raw": "{\n    \"name\": \"Anshuman\",\n    \"middleName\": \"P\",\n    \"surName\": \"Patil\",\n    \"mobile\": \"7875797913\",\n    \"phone\": \"\",\n    \"address\": \"B-303, Laukik Ishaan, Kolhewadi\",\n    \"pincode\": \"411024\",\n    \"city\": \"Pune\",\n    \"admin\": false\n}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set WorkoutPlan",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/plan",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"plan_name\":\"Some Plan\",\n\t\"mon\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }, {\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"tue\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"wed\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"thu\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"fri\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"sat\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }],\n    \"sun\": [{\n        \"index\": 1,\n        \"planId\": \"Anshu\"\n    }]\n}\n\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get WorkoutPlan",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/plan",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Exercise",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/exercise",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Set Exercise",
+			"request": {
+				"url": "http://{{host}}:{{port}}/workout/exercise",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []
