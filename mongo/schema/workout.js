@@ -28,6 +28,4 @@ workout_Schema.statics.findOneOrCreate = function (condition, doc, callback) {
   });
 };
 
-var Workout = mongoose.model('Workout', workout_Schema);
-
-module.exports = Workout;
+module.exports = mongoose.model('Workout', workout_Schema);

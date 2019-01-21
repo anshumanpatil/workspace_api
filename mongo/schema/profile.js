@@ -31,7 +31,4 @@ profileSchema.statics.findOneOrCreate = function (condition, doc, callback) {
   });
 };
 
-var Profile = mongoose.model('User_Profile', profileSchema);
-
-
-module.exports = Profile;
+module.exports = mongoose.model('User_Profile', profileSchema);

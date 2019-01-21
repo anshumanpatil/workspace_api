@@ -1,6 +1,7 @@
-const {User_Master, User_Profile, User_data, mongoConnection, mongo} = models = require('../../db/models');
+const { mongo } = models = require('../../db/models');
+const { User_Profile } = mongo;
+
 const httpCodes = require('../../lib/http-codes')
-var Profile = mongo.mongo.profile;
 
 module.exports = class ProfileEndpoint {
     constructor(){
@@ -10,7 +11,7 @@ module.exports = class ProfileEndpoint {
     postProfile(req, res){
         let __profile = { "user_id" : req.headers.user_id, ...req.body};
         
-        Profile.findOneOrCreate({user_id:req.headers.user_id},__profile, (err, profile) => {
+        User_Profile.findOneOrCreate({user_id:req.headers.user_id},__profile, (err, profile) => {
             return res.status(((profile.created) ? httpCodes.OK : httpCodes.CONFLICT)).json({
                 "success": profile.created,
                 "profile": profile
@@ -22,7 +23,7 @@ module.exports = class ProfileEndpoint {
         let __profile = { "user_id" : req.headers.user_id, ...req.body };
         var query = { "user_id" : req.headers.user_id };
         
-        Profile.findOneAndUpdate(query, __profile, { upsert : true }, (err, profile) => {
+        User_Profile.findOneAndUpdate(query, __profile, { upsert : true }, (err, profile) => {
             if (err || !profile) {
                 return res.status(httpCodes.NOTFOUND).json({ error : "No profile found" })
             }else{
@@ -36,7 +37,7 @@ module.exports = class ProfileEndpoint {
 
     getProfile(req, res){
         
-        Profile.find({
+        User_Profile.find({
             "user_id": req.headers.user_id
         }).lean().limit(1)
         .exec(function(error, result) {

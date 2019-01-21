@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 var fs        = require('fs');
-var envConfig = require('../../config/env')
+var envConfig = require('../config/env')
 var config    = envConfig.get('mongo');
 var path      = require('path');
 
@@ -28,15 +28,14 @@ mongoConnection.on('error', console.error.bind(console, 'MongoDB connection erro
 
 
 fs
-  .readdirSync(path.resolve(__dirname, '../../mongo/schema/'))
+  .readdirSync(path.resolve(__dirname, './schema/'))
   .filter(function(file) {
     return (file.indexOf('.') !== 0) && (file.slice(-3) === '.js');
   })
   .forEach(function(file) {
     let verb = file.substring(0, file.lastIndexOf('.'));
-    mongo[verb] = require(path.resolve(__dirname, '../../mongo/schema/' + file))
+    let mod = require(path.resolve(__dirname, './schema/' + file));
+    mongo[mod.modelName] = mod;
   });
 
-module.exports = {
-    mongo
-}
+module.exports = mongo

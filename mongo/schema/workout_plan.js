@@ -36,6 +36,4 @@ workout_planSchema.statics.findOneOrCreate = function (condition, doc, callback)
   });
 };
 
-var Workout_Plan = mongoose.model('Workout_Plan', workout_planSchema);
-
-module.exports = Workout_Plan;
+module.exports = mongoose.model('Workout_Plan', workout_planSchema);
