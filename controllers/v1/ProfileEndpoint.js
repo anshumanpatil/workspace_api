@@ -1,6 +1,7 @@
-const {User_Master, User_Profile, User_data, mongoConnection} = models = require('../../db/models');
+const {User_Master, User_Profile, User_data, mongoConnection, mongo} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
-var Profile = require('../../mongo/schema/profile');
+var Profile = mongo.mongo.profile;
+
 module.exports = class ProfileEndpoint {
     constructor(){
 

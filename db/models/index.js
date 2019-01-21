@@ -5,19 +5,11 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'home';
-var config    = require('../config/config.json')[env];
-var db        = {};
-const mongoose = require('mongoose');
+var envConfig = require('../../config/env')
+var config    = envConfig.get('database');
 
-let dev_db_url = (env=='home') ? 'mongodb://localhost/users123' : 'mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp';
-let mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB, { 
-  useCreateIndex: true,
-  useNewUrlParser: true
- });
-mongoose.Promise = global.Promise;
-let mongoConnection = mongoose.connection;
-mongoConnection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+var db        = {};
+var mongo        =  require('./mongo');
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -31,8 +23,10 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(function(file) {
-    var model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
+    if(file.indexOf('mongo')<0){
+      let model = sequelize['import'](path.join(__dirname, file));
+      db[model.name] = model;
+    }
   });
 
 Object.keys(db).forEach(function(modelName) {
@@ -43,6 +37,6 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.mongoConnection = mongoConnection;
+db.mongo = mongo;
 
 module.exports = db;
