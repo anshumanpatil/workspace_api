@@ -10,7 +10,7 @@ const cors = require('cors');
 const Validatior = require('./lib/validatorMiddleware');
 const colors = require('./lib/colors');
 //const moduleAlias = require('module-alias');
-const swaggerUi = require('./doc');
+const swaggerUi = require('./lib/doc');
 const swaggerDocument = require('./swagger.json');
 const package = require('./package.json');
 
@@ -76,8 +76,8 @@ console.log()
 swaggerDocument.paths = swaggerObject;
 swaggerDocument.info = package.applicationInfo;
 
-if(package.swagger-path){
-	app.use( package.swagger-path , swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+if(package['swagger-path']){
+	app.use( package['swagger-path'] , swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 
 // catch 404 and forward to error handler

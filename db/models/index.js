@@ -5,11 +5,11 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'home';
-var envConfig = require('../../config/env')
+var envConfig = require('../../config/env');
 var config    = envConfig.get('database');
 
 var db        = {};
-var mongo        =  require('../../mongo/index');
+var mongo        =  require('../mongo');
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 var fs        = require('fs');
-var envConfig = require('../config/env')
+var envConfig = require('../../config/env');
 var config    = envConfig.get('mongo');
 var path      = require('path');
 
 const options = {
-    useCreateIndex: true,
-    useNewUrlParser: true,
+  useCreateIndex: true,
+  useNewUrlParser: true,
 	autoReconnect: true,
 	reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
 	reconnectInterval: 500, // Reconnect every 500ms  
