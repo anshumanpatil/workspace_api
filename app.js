@@ -57,7 +57,7 @@ _.each(require(`./config/${api_version[0]}`),  controller => {
 					swaggerPathsObj[url] = swaggerPathsMethod;
 					swaggerPaths.push(swaggerPathsObj);
 				}
-				app[verb](url, Validatior.validate(def), method);
+				app[verb](url, [Validatior.validate(def)], method);
 			}
 		})
 	})

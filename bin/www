@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('mvc:server');
-var http = require('http');
+const app = require('../app');
+const debug = require('debug')('mvc:server');
+const http = require('http');
 const models = require('../db/models');
+const appConfig = require('../config/env').get('app')
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort('5858');
+console.log("\n\n App running on PORT - ", appConfig.port, "\n\n ")
+var port = normalizePort(appConfig.port);
 app.set('port', port);
 
 /**

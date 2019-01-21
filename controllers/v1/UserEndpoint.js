@@ -1,6 +1,6 @@
 const {User_Master} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
-const constants = require('../../lib/constants');
+const jwtConfig = require('../../config/env').get('jwt');
 const errorMessages = require('../../lib/error-spells');
 const jwt = require('jsonwebtoken');
 
@@ -21,7 +21,7 @@ module.exports = class UserEndpoint {
                     id : user.id,
                     user_email : user.user_email
                 }
-                let __token = jwt.sign({ id: user.id }, constants.secret, {
+                let __token = jwt.sign({ id: user.id }, jwtConfig.secret, {
                     expiresIn: 6000 // expires in 10 min
                 });
                 

@@ -1,7 +1,6 @@
 const {User_Master, mongo} = models = require('../../db/models');
 const { Workout } = mongo;
 const httpCodes = require('../../lib/http-codes')
-const constants = require('../../lib/constants');
 const errorMessages = require('../../lib/error-spells');
 const _ = require('lodash');
 module.exports = class WorkoutPlanEndpoint {
