@@ -19,7 +19,9 @@ module.exports = class WorkoutPlanEndpoint {
     }
 
     getAllExercise(req, res){
-        Workout.find({}, function(error, result) {
+        console.log(req.query.id)
+        let __woQuery = (req.query.id) ? {_id : req.query.id} : {};
+        Workout.find(__woQuery, function(error, result) {
             if(result.length){
                 let resultArray = [];
                 _.each(result, (v, k)=>{
@@ -27,7 +29,7 @@ module.exports = class WorkoutPlanEndpoint {
                 })
                 return res.status(httpCodes.OK).json({
                     "success": true,
-                    "workout": resultArray
+                    "workout": (req.query.id) ? result : resultArray
                 });
             }else{
                 return res.status(httpCodes.OK).json({
@@ -55,6 +57,4 @@ module.exports = class WorkoutPlanEndpoint {
             }
         })
     }
-
-    
 }

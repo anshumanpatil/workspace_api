@@ -19,9 +19,9 @@ module.exports = class WorkoutPlanEndpoint {
     }
 
     getWorkoutPlan(req, res){
-        Workout_Plan.find({
-            "user_id": req.headers.user_id
-        })
+        console.log(req.query.all)
+        let __woPlanQuery = (req.query.all && req.query.all==true) ? {} : {"user_id": req.headers.user_id};
+        Workout_Plan.find(__woPlanQuery)
         .exec(function(error, result) {
             if (error) { 
                 return res.status(httpCodes.NOTFOUND).json({
