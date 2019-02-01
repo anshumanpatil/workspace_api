@@ -1,0 +1,11 @@
+const LOGIN = "LOGIN";
+const NO_USERNAME = "NO_USERNAME";
+const NO_PASSWORD = "NO_PASSWORD";
+const LOADER = "LOADER";
+
+export {
+    LOGIN,
+    NO_USERNAME,
+    NO_PASSWORD,
+    LOADER
+}

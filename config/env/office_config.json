@@ -18,7 +18,7 @@
     }
   },
   "mongo": {
-    "url": "mongodb://anshumanpradippatil1506:yajju1506@ds129823.mlab.com:29823/healthapp"
+    "url": "mongodb://anshumanpradippatil1506:yajju1506@ds149998.mlab.com:49998/nivalocal"
   },
   "jwt": {
     "secret": "placeholder-secretKey",
