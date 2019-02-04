@@ -1,0 +1,32 @@
+<div id="page-wrapper">
+    <div className="main-page login-page ">
+        <h2 className="title1">Login</h2>
+        <div className="widget-shadow">
+            <div className="login-body">
+                <input type="email" className="user" name="email" placeholder="Enter Your Email" required="">
+                <input type="password" name="password" className="lock" placeholder="Password" required="">
+                <div className="forgot-grid">
+                    <div className="forgot">
+                        <a href="#">forgot password?</a>
+                    </div>
+                    <div className="clearfix"> </div>
+                </div>
+                <input type="submit" name="Sign In" value="Sign In">
+                <div className="registration">
+                    Don't have an account ?
+                    <a className="" href="/register">
+                        Create an account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="text" id="username" value={this.state.username} onChange={this.handleChange} placeholder="Enter Your Email"/>
+<input type="text" id="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+<button type="button" onClick={this.onLoginClick}>Login</button>
+<br /><a href="/register">link text</a>
+
+<input type="submit" name="Sign In" value="Sign In" onClick={this.onLoginClick}/>

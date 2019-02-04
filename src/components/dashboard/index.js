@@ -7,7 +7,6 @@ class Dashboard extends Component {
     return (
     <div>
         Dashboard
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/The_Heavy-Bowery_Ballroom-1.jpg" alt="Smiley face"/> 
     </div>
     );
   }

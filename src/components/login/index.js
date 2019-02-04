@@ -4,6 +4,7 @@ import { LoginAction } from '../../actions'
 class Login extends Component {
 
   onLoginClick = (e) => {
+    // console.log(this.props)
     this.props.loginApplication(this.state)
     //window.location.href="/dashboard"
   }
@@ -15,29 +16,53 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    console.log("props Login", props)
+    
     this.state = {
-      "username": "",
-      "password": "",
+      "username": "anshu7875797913@gmail.com",
+      "password": "anshu7875797913",
     }
-    this.onLoginClick = this.onLoginClick.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.hasOwnProperty('user')){
+      this.setState({ user: nextProps.user });
+      this.props.history.push('/dashboard')
+    }
   }
   render() {
     return (
-      <div>
-        <div>{this.props.val}</div>
-        UserName - <input type="text" id="username" value={this.state.username} onChange={this.handleChange} /> <br />
-        PassWord - <input type="text" id="password" value={this.state.password} onChange={this.handleChange} /> <br />
-        <button type="button" onClick={this.onLoginClick}>Login</button>
-        <br /><a href="/register">link text</a>
+      <div id="page-wrapper">
+          <div className="main-page login-page ">
+              <h2 className="title1">Login</h2>
+              <div className="widget-shadow">
+                  <div className="login-body">
+                  <input type="email" id="username" className="user" value={this.state.username} onChange={this.handleChange} placeholder="Enter Your Email"/>
+                  <input type="password" id="password" className="lock" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+                      <div className="forgot-grid">
+                          <div className="forgot">
+                              <a href="#">forgot password?</a>
+                          </div>
+                          <div className="clearfix"> </div>
+                      </div>
+                      <input type="submit" name="Sign In" value="Sign In" onClick={this.onLoginClick}/>
+                      <div className="registration">
+                          Don't have an account ?
+                          <a className="" href="/register">
+                              Create an account
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-
     );
   }
 }
+
 const mapStateToProps = state => {
-  return { val: state.val };
+  return { user: state.user };
 };
 
 function mapDispatchToProps(dispatch) {
@@ -47,4 +72,5 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

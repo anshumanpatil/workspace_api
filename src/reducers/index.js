@@ -1,19 +1,20 @@
 const initialState = {
-    val: 10
+    user: {}
 };
 function rootReducer(state = initialState, action) {
-    console.log("action.type", action)
+    
     if (action.type === "LOGIN") {
-        return Object.assign({}, {
-            val: action.type
+        return Object.assign({}, state, {
+            user: action.user
         });
     } else if (action.type === "ERROR") {
+        console.log("action.user", action)
         return Object.assign({}, {
-            val: action.type
+            user : action
         });
     } else if (action.type === "OK") {
-        return Object.assign({}, {
-            val: action.type
+        return Object.assign({}, state, {
+            user: action.type
         });
     } else {
         return state;
