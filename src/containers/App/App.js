@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { LoginAction } from '../../actions'
 
 // import { mapDispatchToProps, mapStateToProps } from '../../mappingFunctions';
 import MainRoutes from '../../routes/MainRoutes'
@@ -32,11 +31,4 @@ const mapStateToProps = state => {
   return { user: state.user };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loginApplication: (credentials) => {
-      return dispatch(LoginAction(credentials));
-    }
-  };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

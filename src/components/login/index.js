@@ -41,18 +41,16 @@ class Login extends Component {
                   <input type="email" id="username" className="user" value={this.state.username} onChange={this.handleChange} placeholder="Enter Your Email"/>
                   <input type="password" id="password" className="lock" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
                       <div className="forgot-grid">
-                          <div className="forgot">
-                              <a href="#">forgot password?</a>
-                          </div>
-                          <div className="clearfix"> </div>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <input type="button" name="forgot" value="Forgot Password" className="btn btn-info pull-left" style={{'width':'100%'}}/>
+                        </div>
+                        <div className="col-md-6">
+                          <input type="button" name="register" value="Register" className="btn btn-info pull-right" style={{'width':'100%'}}/>
+                        </div>
+                      </div>
                       </div>
                       <input type="submit" name="Sign In" value="Sign In" onClick={this.onLoginClick}/>
-                      <div className="registration">
-                          Don't have an account ?
-                          <a className="" href="/register">
-                              Create an account
-                          </a>
-                      </div>
                   </div>
               </div>
           </div>

@@ -1,25 +1,31 @@
-
-import { renderRoutes } from "react-router-config";
+import { renderProtected } from "./renderProtected";
 import { Dashboard, Login, Register, NotFound } from '../components';
 
 const routes = [
     {
       path: "/",
       exact: true,
-      component: Login
+      component: Login,
+      isPublic: true,
+      isAsync:true
     },
     {
       path: "/register",
-      component: Register
+      component: Register,
+      isPublic: true,
+      isAsync:true
     },
     {
       path: "/dashboard",
-      component: Dashboard
+      component: Dashboard,
+      isPublic: false,
+      redirectNonPublic: Login
     },
     {
       path: "*",
-      component: NotFound
+      component: NotFound,
+      isPublic: true
     }
 ]
-const MainRoutes = renderRoutes(routes);
+const MainRoutes = renderProtected(routes);
 export default MainRoutes;
