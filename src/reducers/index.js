@@ -1,23 +1,27 @@
 const initialState = {
-    user: {}
+    user: {},
+    isLoading: false
 };
 function rootReducer(state = initialState, action) {
-    
-    if (action.type === "LOGIN") {
-        return Object.assign({}, state, {
-            user: action.user
-        });
-    } else if (action.type === "ERROR") {
-        console.log("action.user", action)
-        return Object.assign({}, {
-            user : action
-        });
-    } else if (action.type === "OK") {
-        return Object.assign({}, state, {
-            user: action.type
-        });
-    } else {
-        return state;
+    switch(action.type){
+        case "LOGIN":
+            return Object.assign({}, state, {
+                user: action.user
+            });
+        break;
+        case "LOADING_START":
+            return Object.assign({}, state, {
+                isLoading: true
+            });
+        break;
+        case "LOADING_END":
+            return Object.assign({}, state, {
+                isLoading: false
+            });
+        break;
+        default:
+            return state;
+        break;
     }
 };
 export default rootReducer;
