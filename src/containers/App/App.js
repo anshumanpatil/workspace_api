@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter, Switch } from 'react-router-dom';
+import MainRoutes from '../../routes/MainRoutes';
 
-// import { mapDispatchToProps, mapStateToProps } from '../../mappingFunctions';
-import MainRoutes from '../../routes/MainRoutes'
 class App extends Component {
 
   componentWillReceiveProps(nextProps) {

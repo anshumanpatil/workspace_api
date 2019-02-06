@@ -18,7 +18,7 @@ const routes = [
     {
       path: "/dashboard",
       component: Dashboard,
-      isPublic: false,
+      isPublic: true,
       redirectNonPublic: Login
     },
     {

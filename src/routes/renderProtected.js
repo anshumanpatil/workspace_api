@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router';
-import React, {Component} from 'react';
+import React from 'react';
 import _extends from '@babel/runtime/helpers/esm/extends';
 import store from '../store';
 
