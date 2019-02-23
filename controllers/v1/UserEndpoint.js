@@ -2,7 +2,7 @@ const {User_Master} = models = require('../../db/models');
 const httpCodes = require('../../lib/http-codes')
 const jwtConfig = require('../../config/env').get('jwt');
 const errorMessages = require('../../lib/error-spells');
-const jwt = require('jsonwebtoken');
+const jwtManager = require('../../lib/jwtManager')(jwtConfig);
 
 module.exports = class UserEndpoint {
     constructor(){
@@ -14,17 +14,16 @@ module.exports = class UserEndpoint {
             where: { user_email : req.body.user_email },
             raw : true
         })
-        .then(function (user) {
+        .then(async function (user) {
             if (user && User_Master.validPassword(req.body.user_password, user.user_password)) {
                 
                 let __userResult = {
                     id : user.id,
                     user_email : user.user_email
                 }
-                let __token = jwt.sign({ id: user.id }, jwtConfig.secret, {
-                    expiresIn: 6000 // expires in 10 min
-                });
-                
+
+                let __token = await jwtManager.getToken(user.id, 6000);
+
                 return res.status(httpCodes.OK).json({
                     "success" : true,
                     "token" : __token,
