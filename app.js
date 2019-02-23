@@ -23,7 +23,7 @@ const package = require('./package.json');
 /* ------------------------- */ 
 
 app.use(cors());
-app.set('views', path.join(__dirname, 'views'));
+app.set('build', path.join(__dirname, 'build'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -31,7 +31,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 let swaggerPaths = [];
 let swaggerObject = {};

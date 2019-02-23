@@ -5,14 +5,17 @@ import {
 } from './types'
 import Axios from 'axios';
 
+let API_URL = process.env.REACT_APP_API_URL;
+let PORT = process.env.REACT_APP_API_PORT;
+
 export function LoginAction(credentials) {
     let { username, password } = credentials;
-    
+    console.log(`${API_URL}:${PORT}/user/login`)
     return dispatch => {
         console.log("username, password", username, password);
         dispatch({ "type": LOADING_START });
         Axios({
-            url: 'http://192.168.104.4:5858/user/login',
+            url: `${API_URL}:${PORT}/user/login`,
             method: 'post',
             data: { "user_email": username, "user_password": password }
         })
@@ -24,6 +27,7 @@ export function LoginAction(credentials) {
             }
         })
         .catch(loginError=>{
+            console.log("loginError",loginError)
             dispatch({ "type": LOADING_END });
             dispatch({ "type": "ERROR", "error": loginError.response.data.error });
         })

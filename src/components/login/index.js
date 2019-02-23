@@ -26,6 +26,7 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("nextProps nextProps nextProps", nextProps)
     if(nextProps.hasOwnProperty('user')){
       this.setState({ user: nextProps.user });
       this.props.history.push('/dashboard')
