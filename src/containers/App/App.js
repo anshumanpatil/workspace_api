@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter, Switch } from 'react-router-dom';
 import MainRoutes from '../../routes/MainRoutes';
-import Loader from '../Loader'
+import Loader from '../Loader';
 import './App.css';
 
 class App extends Component {

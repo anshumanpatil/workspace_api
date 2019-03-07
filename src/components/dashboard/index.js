@@ -12,12 +12,16 @@ class Dashboard extends Component {
     super(props);
   }
 
+  // componentDidMount(){
+  //   console.log("this.props", this.props.match.params)
+  // }
+
   render() {
     return (
     <div className="main-content">
       <SideMenu></SideMenu>
       <HeaderMenu></HeaderMenu>
-      <PageWrapper></PageWrapper>
+      <PageWrapper inner={this.props.match.params}></PageWrapper>
       <Footer></Footer>
     </div>
     );

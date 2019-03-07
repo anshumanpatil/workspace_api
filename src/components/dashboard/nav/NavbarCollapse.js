@@ -5,6 +5,7 @@ import { SideMenu } from '../../../components';
 class NavbarCollapse extends Component {
 
   componentDidMount() {
+    console.log("window.jQuery", window.jQuery)
     window.jQuery(".sidebar-menu").SidebarNav();
   }
 
@@ -18,7 +19,7 @@ class NavbarCollapse extends Component {
           />
           <SideMenu.LI
             liClass="treeview"
-            redirect="/dashboard"
+            redirect="/dashboard/profile"
             icon="fa-dashboard"
             text="Dashboard"
           />

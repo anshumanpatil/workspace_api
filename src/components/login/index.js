@@ -29,7 +29,7 @@ class Login extends Component {
     console.log("nextProps nextProps nextProps", nextProps)
     if(nextProps.hasOwnProperty('user')){
       this.setState({ user: nextProps.user });
-      this.props.history.push('/dashboard')
+      this.props.history.push('/dashboard/dashboard')
     }
   }
   render() {

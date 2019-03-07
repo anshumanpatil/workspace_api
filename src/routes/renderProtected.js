@@ -27,6 +27,9 @@ import store from '../store';
 // };
 
 function renderProtected(routes, extraProps, switchProps) {
+  console.log("routes, ", routes)
+  console.log("extraProps, ", extraProps)
+  console.log("switchProps", switchProps)
     
   if (extraProps === void 0) {
     extraProps = {};

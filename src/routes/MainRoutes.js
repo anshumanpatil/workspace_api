@@ -16,7 +16,7 @@ const routes = [
       isAsync:true
     },
     {
-      path: "/dashboard",
+      path: "/dashboard/:topicId",
       component: Dashboard,
       isPublic: true,
       redirectNonPublic: Login

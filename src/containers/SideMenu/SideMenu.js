@@ -6,8 +6,7 @@ class SideMenu extends Component {
   componentDidMount() {
     // TODO change classie to jQuery and toggle button place
     var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-    showLeftPush = document.getElementById( 'showLeftPush' ),
-    body = document.body;
+    showLeftPush = document.getElementById( 'showLeftPush' );
     
     showLeftPush.onclick = function() {
 

@@ -5,8 +5,9 @@ import {
 } from './types'
 import Axios from 'axios';
 
-let API_URL = process.env.REACT_APP_API_URL;
-let PORT = process.env.REACT_APP_API_PORT;
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+let API_URL = process.env.REACT_APP_API_URL_OFFICE;
+let PORT = process.env.REACT_APP_API_PORT_OFFICE;
 
 export function LoginAction(credentials) {
     let { username, password } = credentials;

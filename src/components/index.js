@@ -11,6 +11,8 @@ import NotificationDropDown from './dashboard/header/NotificationDropDown'
 import TaskDropDown from './dashboard/header/TaskDropDown'
 import SearchBox from './dashboard/header/SearchBox'
 import ProfileDopDown from './dashboard/header/ProfileDopDown'
+import Profile from './profile'
+
 
 export {
     Login,
@@ -24,5 +26,6 @@ export {
     NotificationDropDown,
     TaskDropDown,
     SearchBox,
-    ProfileDopDown
+    ProfileDopDown,
+    Profile
 }

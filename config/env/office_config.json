@@ -1,6 +1,6 @@
 {
   "app": {
-    "port": 5858
+    "port": 5897
   },
   "database": {
     "username": "root",
